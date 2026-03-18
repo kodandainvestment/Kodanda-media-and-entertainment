@@ -2,7 +2,7 @@ import { FiMail, FiPhone, FiMapPin, FiSend } from "react-icons/fi";
 
 const info = [
   { icon: <FiMapPin />, label: "Visit Us", value: "Unity One Mall, Indore MP" },
-  { icon: <FiMail />, label: "Email", value: "hello@kodandamedia.com" },
+  { icon: <FiMail />, label: "Email", value: "hr@kodanda.com" },
   { icon: <FiPhone />, label: "Call", value: "+91 98765 43210" },
 ];
 
@@ -43,17 +43,19 @@ export default function Contact() {
             </div>
 
             {/* 3 Info Cards in a row */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2">
               {info.map((item) => (
                 <div
                   key={item.label}
-                  className="flex flex-col items-center gap-2 bg-white rounded-2xl px-3 py-5 shadow-sm border border-purple-50 text-center"
+                  className="flex flex-col items-center gap-2 bg-white rounded-2xl px-2 py-4 shadow-sm border border-purple-50 text-center"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-[#f07060] text-lg">
+                  <div className="w-9 h-9 rounded-xl bg-purple-100 flex items-center justify-center text-[#f07060] text-base flex-shrink-0">
                     {item.icon}
                   </div>
-                  <p className="text-gray-400 text-xs">{item.label}</p>
-                  <p className="text-gray-900 font-semibold text-xs leading-snug">{item.value}</p>
+                  <div>
+                    <p className="text-gray-400 text-[10px]">{item.label}</p>
+                    <p className="text-gray-900 font-semibold text-[11px] leading-snug break-words">{item.value}</p>
+                  </div>
                 </div>
               ))}
             </div>
