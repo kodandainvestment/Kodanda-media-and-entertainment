@@ -61,28 +61,44 @@ export default function Services() {
       </div>
 
       <div className="max-w-5xl mx-auto flex flex-col lg:flex-row gap-4">
-        {/* Left sidebar */}
-        <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible lg:w-64 flex-shrink-0">
+        {/* Mobile: pill tabs */}
+        <div className="flex lg:hidden gap-2 overflow-x-auto pb-1 scrollbar-hide">
           {services.map((s, i) => (
             <button
               key={s.title}
               onClick={() => setActive(i)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all flex-shrink-0 lg:flex-shrink w-full ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap flex-shrink-0 transition-all ${
                 active === i
-                  ? "border border-[#f07060] shadow-lg"
+                  ? "bg-gray-900 text-white"
+                  : "bg-white text-gray-600 border border-gray-200 hover:border-[#f07060] hover:text-[#f07060]"
+              }`}
+            >
+              <span className="text-base">{s.icon}</span>
+              {s.title}
+            </button>
+          ))}
+        </div>
+
+        {/* Desktop: sidebar */}
+        <div className="hidden lg:flex flex-col gap-2 w-64 flex-shrink-0">
+          {services.map((s, i) => (
+            <button
+              key={s.title}
+              onClick={() => setActive(i)}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all w-full ${
+                active === i
+                  ? "bg-white border border-[#f07060] shadow-md"
                   : "bg-white/60 text-gray-600 hover:bg-white hover:text-gray-900"
               }`}
             >
-              <span
-                className={`text-lg flex-shrink-0 ${active === i ? "text-[#f07060]" : "text-gray-400"}`}
-              >
+              <span className={`text-lg flex-shrink-0 ${active === i ? "text-[#f07060]" : "text-gray-400"}`}>
                 {s.icon}
               </span>
-              <div className="hidden sm:block">
-                <p className={`font-semibold text-sm ${active === i ? "text-black" : "text-gray-800"}`}>
+              <div>
+                <p className={`font-semibold text-sm ${active === i ? "text-gray-900" : "text-gray-800"}`}>
                   {s.title}
                 </p>
-                <p className={`text-xs ${active === i ? "text-gray-600" : "text-gray-400"}`}>
+                <p className={`text-xs ${active === i ? "text-gray-500" : "text-gray-400"}`}>
                   {s.subtitle}
                 </p>
               </div>
@@ -90,8 +106,8 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Right detail panel */}
-        <div className="flex-1 bg-white rounded-2xl shadow-sm p-8">
+        {/* Detail panel */}
+        <div className="flex-1 bg-white rounded-2xl shadow-sm p-6 sm:p-8">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-12 rounded-xl bg-[#f5eeff] flex items-center justify-center text-[#f07060] text-xl">
               {selected.icon}
