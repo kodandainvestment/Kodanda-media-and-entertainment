@@ -1,1 +1,0 @@
-text gradiant - bg-gradient-to-r from-[#E63B57] via-[#FF5E6E] to-[#FF8B83] bg-clip-text text-transparent
