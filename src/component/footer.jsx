@@ -1,31 +1,40 @@
 import { useState } from "react";
-import { FaInstagram, FaTwitter, FaLinkedinIn, FaFacebookF, FaYoutube } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaTwitter,
+  FaLinkedinIn,
+  FaFacebookF,
+  FaYoutube,
+} from "react-icons/fa";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import PrivacyPolicy from "../content/PrivacyPolicy";
 import TermsCondition from "../content/Terms&Condition";
 
 const services = [
-  "Brand Strategy",
-  "Video Production",
-  "Brand Identity",
-  "Performance Marketing",
-  "Web & Digital",
-  "Growth Hacking",
+  "Unfiltered Success",
+  "Bollywood Inside",
+  "History Unfolded, Hidden Past India",
+  "Fact Factory India",
+  "Money Habit India, Money Habit",
+  "Discipline Lab, Discipline X",
+  "Global Affairs India, Geo Insights India",
 ];
 
 const company = [
   { label: "Home", id: "home" },
   { label: "About Us", id: "about" },
-  { label: "Portfolio", id: "portfolio" },
-  { label: "Why Choose", id: "why-us" },
+  { label: "Channels", id: "chennals" },
+  { label: "Viral Contact", id: "viral-content" },
+  { label: "Case Studies", id: "case-studies" },
+  { label: "Growth & Vision", id: "growth-vision" },
   { label: "FAQ", id: "faq" },
-  { label: "Contact", id: "contact" },
+  { label: "Contact Us", id: "contact" },
 ];
 
 const socials = [
-  { icon: <FaInstagram />, href: "#", label: "Instagram" },
+  { icon: <FaInstagram />, href: "https://www.instagram.com/kodandamedia?igsh=MWE3ODQ4d2ZjYzJjZw==", label: "Instagram" },
   { icon: <FaTwitter />, href: "#", label: "Twitter" },
-  { icon: <FaLinkedinIn />, href: "#", label: "LinkedIn" },
+  { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/company/kodanda-media-and-entertainment-pvt-ltd/posts/?feedView=all", label: "LinkedIn" },
   { icon: <FaFacebookF />, href: "#", label: "Facebook" },
   { icon: <FaYoutube />, href: "#", label: "YouTube" },
 ];
@@ -46,17 +55,14 @@ export default function Footer() {
       <footer className="bg-black border-t border-white/10 text-gray-200">
         <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 border-b border-gray-700/60 pb-10">
-
             {/* Brand */}
             <div className="lg:col-span-2">
               <p className="text-2xl font-bold text-white mb-3">
-                Kodanda{" "}
-                <span className="text-[#C91111]">
-                  Media
-                </span>
+                Kodanda <span className="text-[#C91111]">Media</span>
               </p>
               <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">
-                Enterprise-grade digital marketing &amp; media solutions for ambitious brands.
+                Enterprise-grade digital marketing &amp; media solutions for
+                ambitious brands.
               </p>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
@@ -76,7 +82,9 @@ export default function Footer() {
 
             {/* Services */}
             <div>
-              <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Channels</p>
+              <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                Channels
+              </p>
               <ul className="space-y-2 text-sm">
                 {services.map((s) => (
                   <li key={s}>
@@ -93,7 +101,9 @@ export default function Footer() {
 
             {/* Company */}
             <div>
-              <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Company</p>
+              <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                Company
+              </p>
               <ul className="space-y-2 text-sm">
                 {company.map((c) => (
                   <li key={c.label}>
@@ -110,7 +120,9 @@ export default function Footer() {
 
             {/* Legal & Social */}
             <div>
-              <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Legal</p>
+              <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                Legal
+              </p>
               <ul className="space-y-2 text-sm mb-8">
                 <li>
                   <button
@@ -130,7 +142,9 @@ export default function Footer() {
                 </li>
               </ul>
 
-              <p className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Follow Us</p>
+              <p className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">
+                Follow Us
+              </p>
               <div className="flex flex-wrap gap-2">
                 {socials.map((s) => (
                   <a
@@ -150,10 +164,16 @@ export default function Footer() {
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
             <p>© 2026 Kodanda Media and Entertainment. All rights reserved.</p>
             <div className="flex gap-4">
-              <button onClick={() => setShowPrivacy(true)} className="hover:text-[#C91111] transition-colors">
+              <button
+                onClick={() => setShowPrivacy(true)}
+                className="hover:text-[#C91111] transition-colors"
+              >
                 Privacy Policy
               </button>
-              <button onClick={() => setShowTerms(true)} className="hover:text-[#C91111] transition-colors">
+              <button
+                onClick={() => setShowTerms(true)}
+                className="hover:text-[#C91111] transition-colors"
+              >
                 Terms of Service
               </button>
             </div>
