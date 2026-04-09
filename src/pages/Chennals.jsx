@@ -230,9 +230,33 @@ export default function Channels() {
         {/* Header */}
         <div className="text-center mb-14">
           <p className="text-[#C91111] text-sm tracking-widest uppercase mb-3 font-semibold">Our Network</p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+          {/* <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Our <span className="text-[#C91111]">Channels</span>
-          </h2>
+          </h2> */}
+          <h2 style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 900,
+                fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
+                lineHeight: 1.08,
+                letterSpacing: "-0.02em",
+                color: "#0f0f0f",
+                margin: "0 0 16px",
+              }}>
+                Our{" "}
+                <span style={{ color: "#C91111", position: "relative", display: "inline-block" }}>
+                  Channels
+                  {/* Animated underline */}
+                  <svg viewBox="0 0 240 14" style={{
+                    position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
+                  }}>
+                    <path d="M 3 10 Q 120 3 237 10"
+                      stroke="#C91111" strokeWidth="3" fill="none"
+                      strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
+                      style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+                    />
+                  </svg>
+                </span>
+              </h2>
           <p className="text-gray-500 text-base max-w-2xl mx-auto leading-relaxed">
             Each channel is built around a specific niche, audience, and content strategy, delivering focused, high-value content at scale.
           </p>

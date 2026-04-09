@@ -1,14 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import DecryptedText from "../animations/DecryptedText ";
-import {
-  FaInstagram,
-  FaWhatsapp,
-  FaTwitter,
-  FaFacebook,
-  FaLinkedin,
-  FaYoutube,
-  FaPinterest,
-} from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaPinterest} from "react-icons/fa";
+import { FaThreads } from "react-icons/fa6";
+import { FiTwitter } from "react-icons/fi";
+import { CiFacebook, CiLinkedin, CiYoutube } from "react-icons/ci";
+import { AiOutlinePinterest } from "react-icons/ai";
 
 export default function Dashboard() {
   const [decryptKey, setDecryptKey] = useState(0);
@@ -193,12 +189,14 @@ export default function Dashboard() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
         {[
           { Icon: FaInstagram, top: "15%", left: "8%" },
-          { Icon: FaWhatsapp, top: "70%", left: "10%" },
-          { Icon: FaTwitter, top: "20%", right: "12%" },
-          { Icon: FaFacebook, top: "60%", right: "8%" },
-          { Icon: FaYoutube, bottom: "20%", right: "15%" },
-          { Icon: FaPinterest, bottom: "25%", left: "20%" },
-          { Icon: FaLinkedin, top: "40%", left: "50%" },
+          { Icon: FaWhatsapp, top: "50%", left: "10%" },
+          { Icon: FiTwitter, top: "20%", right: "12%" },
+          { Icon: CiFacebook, top: "50%", right: "8%" },
+          { Icon: CiYoutube , bottom: "20%", right: "15%" },
+          { Icon: AiOutlinePinterest, bottom: "25%", left: "20%" },
+          { Icon: CiLinkedin , top: "10%", left: "30%" },
+          { Icon: FaThreads , bottom: "35%", right: "25%" },
+
         ].map((item, i) => {
           const Icon = item.Icon;
           return (
@@ -235,11 +233,36 @@ export default function Dashboard() {
           />
         </p>
 
-        <h1 className="headline-scale text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight max-w-5xl">
+        {/* <h1 className="headline-scale text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight max-w-5xl">
           <span className="text-[#C91111]">Building </span>high-impact
           <br />
           digital media <span className="text-[#C91111]">brands</span>
-        </h1>
+        </h1> */}
+        <h1 style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 900,
+                fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
+                lineHeight: 1.08,
+                letterSpacing: "-0.02em",
+                color: "#0f0f0f",
+                margin: "0 0 16px",
+              }}>
+                <span className="text-[#c91111]">Building </span>high-impact
+                digital media{" "}
+                <span style={{ color: "#C91111", position: "relative", display: "inline-block" }}>
+                  brands
+                  {/* Animated underline */}
+                  <svg viewBox="0 0 240 14" style={{
+                    position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
+                  }}>
+                    <path d="M 3 10 Q 120 3 237 10"
+                      stroke="#C91111" strokeWidth="3" fill="none"
+                      strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
+                      style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+                    />
+                  </svg>
+                </span>
+              </h1>
 
         {/* <h1
           className="headline-scale text-3xl sm:text-5xl lg:text-7xl font-medium text-gray-900 leading-tight text-center"
@@ -260,7 +283,7 @@ export default function Dashboard() {
           viewBox="0 0 320 80"
           style={{
             position: "absolute",
-            bottom: 60,
+            bottom: 40,
             left: "50%",
             transform: "translateX(-50%)",
             opacity: 0.35,
@@ -302,7 +325,7 @@ export default function Dashboard() {
           <button
             onClick={() =>
               document
-                .getElementById("services")
+                .getElementById("chennals")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
             className="btn-left relative bg-gradient-to-r from-[#C91111] to-[#a50e0e] text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#C91111]/30 group overflow-hidden w-full sm:w-auto text-sm sm:text-base"
@@ -318,7 +341,7 @@ export default function Dashboard() {
             }
             className="btn-right relative border-2 border-[#C91111] text-[#C91111] px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:bg-[#C91111] hover:text-white w-full sm:w-auto text-sm sm:text-base"
           >
-            <span className="relative z-10">Let's Grow Your Brand</span>
+            <span className="relative z-10">Build Viral Content Together</span>
           </button>
         </div>
       </div>

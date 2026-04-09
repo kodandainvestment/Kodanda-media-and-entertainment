@@ -43,7 +43,7 @@ export default function Navbar() {
           onClick={() => scrollTo("contact")}
           className="hidden md:inline-block bg-[#C91111] text-white px-5 py-2.5 rounded-full font-semibold hover:bg-[#a50e0e] transition"
         >
-          Get Started
+          Let's Collab
         </button>
 
         <button

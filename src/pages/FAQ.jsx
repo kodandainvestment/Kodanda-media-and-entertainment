@@ -5,7 +5,7 @@ import AnimatedList from "../animations/AnimatedList";
 /* ─── Data ───────────────────────────────────────────────────────────────── */
 const faqs = [
   {
-    q: "What is K-Media (Kodanda Media)?",
+    q: "What is Kodanda Media (K Media)?",
     a: "K-Media is a content-first digital media network focused on building high-performing YouTube channels across multiple niches. We specialize in creating viral, high-retention content that drives massive audience growth."
   },
   {
@@ -312,7 +312,7 @@ function HelixDecor({ scrollY }) {
 
 
 export default function FAQ() {
-  const [openSet, setOpenSet] = useState(() => new Set(faqs.map((_, i) => i)));
+  const [openSet, setOpenSet] = useState(() => new Set());
   const toggle = (i) => setOpenSet(s => { const n = new Set(s); n.has(i) ? n.delete(i) : n.add(i); return n; });
   const [scrollY, setScrollY]     = useState(0);
   const [maxScroll, setMaxScroll] = useState(1);
@@ -565,80 +565,6 @@ export default function FAQ() {
               )}
             />
           </div>
-
-          {/* ── CTA Card ── */}
-          <Reveal direction="up" delay={0.2}>
-            <div style={{ marginTop: 0 }}>
-              <TiltCard>
-                <div style={{
-                  background: "linear-gradient(135deg, #fff 0%, #fef2f2 100%)",
-                  border: "1.5px solid rgba(201,17,17,0.15)",
-                  borderRadius: 28, padding: "clamp(28px, 5vw, 48px) clamp(20px, 5vw, 40px)",
-                  textAlign: "center", position: "relative", overflow: "hidden",
-                  boxShadow: "0 20px 60px rgba(201,17,17,0.07), 0 4px 20px rgba(0,0,0,0.05)",
-                }}>
-                  {/* BG decoration */}
-                  <div style={{
-                    position: "absolute", top: -60, right: -60,
-                    width: 200, height: 200, borderRadius: "50%",
-                    background: "radial-gradient(circle, rgba(201,17,17,0.08) 0%, transparent 70%)",
-                  }} />
-                  <div style={{
-                    position: "absolute", bottom: -40, left: -40,
-                    width: 160, height: 160, borderRadius: "50%",
-                    background: "radial-gradient(circle, rgba(201,17,17,0.05) 0%, transparent 70%)",
-                  }} />
-
-                  {/* Icon */}
-                  <div style={{
-                    width: 60, height: 60, borderRadius: "50%",
-                    background: "rgba(201,17,17,0.08)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    margin: "0 auto 20px",
-                    animation: "pulse-ring 2.5s infinite",
-                    position: "relative", zIndex: 1,
-                  }}>
-                    <FiMessageCircle style={{ color: "#C91111", fontSize: 24 }} />
-                  </div>
-
-                  <p style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontWeight: 900, fontSize: 26, color: "#111",
-                    marginBottom: 10, position: "relative", zIndex: 1,
-                  }}>Still have questions?</p>
-
-                  <p style={{ color: "#9ca3af", fontSize: 14, marginBottom: 28, position: "relative", zIndex: 1 }}>
-                    Our team is happy to walk you through anything you need.
-                  </p>
-
-                  <button
-                    onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.background = "#a50e0e";
-                      e.currentTarget.style.transform = "scale(1.05)";
-                      e.currentTarget.style.boxShadow = "0 12px 40px rgba(201,17,17,0.4)";
-                    }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.background = "#C91111";
-                      e.currentTarget.style.transform = "scale(1)";
-                      e.currentTarget.style.boxShadow = "0 6px 24px rgba(201,17,17,0.25)";
-                    }}
-                    style={{
-                      background: "#C91111", color: "#fff",
-                      padding: "14px 40px", borderRadius: 999,
-                      fontWeight: 700, fontSize: 14, border: "none", cursor: "pointer",
-                      boxShadow: "0 6px 24px rgba(201,17,17,0.25)",
-                      transition: "all 0.25s ease",
-                      position: "relative", zIndex: 1,
-                      letterSpacing: "0.04em",
-                    }}>
-                    Contact Us →
-                  </button>
-                </div>
-              </TiltCard>
-            </div>
-          </Reveal>
-
         </div>
       </section>
 

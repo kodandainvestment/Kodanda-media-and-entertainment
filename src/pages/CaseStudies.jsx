@@ -111,8 +111,29 @@ export default function CaseStudies() {
           <p className="text-[#C91111] text-sm tracking-widest uppercase mb-3 font-semibold">
             Proof of Work
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6">
-            Case Studies / <span className="text-[#C91111]">Proof</span>
+          <h2
+            className="font-display font-black text-gray-900 tracking-tight mb-4"
+            style={{ fontSize: "clamp(2.4rem,5.5vw,4.2rem)", lineHeight: 1.05 }}
+          >
+            Case Studies /
+            <span className="text-[#C91111] relative inline-block">
+              Proof
+              <svg
+                viewBox="0 0 100 14"
+                className="absolute -bottom-1.5 left-0 w-full overflow-visible"
+              >
+                <path
+                  d="M 3 10 Q 50 3 97 10"
+                  stroke="#C91111"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeDasharray="300"
+                  strokeDashoffset="300"
+                  className="anim-draw-line"
+                />
+              </svg>
+            </span>
           </h2>
           <div className="max-w-3xl mx-auto space-y-3">
             <p className="text-gray-700 text-base leading-relaxed font-medium">

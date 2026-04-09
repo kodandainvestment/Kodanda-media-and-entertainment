@@ -511,11 +511,11 @@ function PageDecorations() {
       {/* Bottom arc */}
       <svg
         width="400"
-        height="60"
+        height="80"
         viewBox="0 0 400 60"
         style={{
           position: "absolute",
-          bottom: 80,
+          bottom: 40,
           left: "50%",
           transform: "translateX(-50%)",
           opacity: 0.12,
@@ -544,9 +544,9 @@ function PageDecorations() {
 
 const stats = [
   { icon: <FiGrid />, value: "12+", label: "Active Chennals" },
-  { icon: <FiTrendingUp />, value: "4+", label: "Plateforms" },
   { icon: <FiLayers />, value: "10+", label: "Content Categories" },
-  { icon: <FiVideo />, value: "24+", label: "Daily Content output" },
+  { icon: <FiTrendingUp />, value: "8+", label: "Plateforms" },
+  { icon: <FiVideo />, value: "10+", label: "Daily Content output" },
 ];
 
 const values = [
@@ -605,49 +605,6 @@ const mission = [
     icon: <FiBriefcase />,
     Heading: "Our Vision",
     Text: " To become one of India’s leading digital media powerhouses, shaping how the next generation learns, thinks, and consumes content.",
-  },
-];
-
-const team = [
-  {
-    name: "Meera Kodanda",
-    role: "Founder & CEO",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80",
-  },
-  {
-    name: "Arjun Rao",
-    role: "Creative Director",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80",
-  },
-  {
-    name: "Sneha Desai",
-    role: "Head of Strategy",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80",
-  },
-  {
-    name: "Karthik Nair",
-    role: "Lead Developer",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
-  },
-  {
-    name: "Meera Kodanda",
-    role: "Founder & CEO",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80",
-  },
-  {
-    name: "Arjun Rao",
-    role: "Creative Director",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80",
-  },
-  {
-    name: "Sneha Desai",
-    role: "Head of Strategy",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80",
-  },
-  {
-    name: "Karthik Nair",
-    role: "Lead Developer",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
   },
 ];
 
@@ -807,9 +764,33 @@ export default function About() {
       <div className="max-w-5xl mx-auto flex flex-col gap-20">
         {/* about hero section */}
         <div className="text-center">
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
+          {/* <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
             We Build Brands <span className="text-[#C91111]">That Matter</span>
-          </h2>
+          </h2> */}
+          <h2 style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 900,
+                fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
+                lineHeight: 1.08,
+                letterSpacing: "-0.02em",
+                color: "#0f0f0f",
+                margin: "0 0 16px",
+              }}>
+                We Build Brands{" "}
+                <span style={{ color: "#C91111", position: "relative", display: "inline-block" }}>
+                  That Matters
+                  {/* Animated underline */}
+                  <svg viewBox="0 0 240 14" style={{
+                    position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
+                  }}>
+                    <path d="M 3 10 Q 120 3 237 10"
+                      stroke="#C91111" strokeWidth="3" fill="none"
+                      strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
+                      style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+                    />
+                  </svg>
+                </span>
+              </h2>
           <p className="text-gray-800 text-base leading-relaxed mb-4">
             Kodanda Media & Entertainment is a multi-channel digital media
             ecosystem built to inform, inspire, and influence millions across

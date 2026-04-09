@@ -5,38 +5,37 @@ import {
   FaLinkedinIn,
   FaFacebookF,
   FaYoutube,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import PrivacyPolicy from "../content/PrivacyPolicy";
 import TermsCondition from "../content/Terms&Condition";
+import { FaThreads } from "react-icons/fa6";
 
 const services = [
   "Unfiltered Success",
   "Bollywood Inside",
-  "History Unfolded, Hidden Past India",
-  "Fact Factory India",
-  "Money Habit India, Money Habit",
-  "Discipline Lab, Discipline X",
-  "Global Affairs India, Geo Insights India",
+  "sarcastic_samachar"
 ];
 
 const company = [
   { label: "Home", id: "home" },
   { label: "About Us", id: "about" },
   { label: "Channels", id: "chennals" },
-  { label: "Viral Contact", id: "viral-content" },
+  // { label: "Viral Contact", id: "viral-content" },
   { label: "Case Studies", id: "case-studies" },
-  { label: "Growth & Vision", id: "growth-vision" },
-  { label: "FAQ", id: "faq" },
+  // { label: "Growth & Vision", id: "growth-vision" },
+  // { label: "FAQ", id: "faq" },
   { label: "Contact Us", id: "contact" },
 ];
 
 const socials = [
   { icon: <FaInstagram />, href: "https://www.instagram.com/kodandamedia?igsh=MWE3ODQ4d2ZjYzJjZw==", label: "Instagram" },
-  { icon: <FaTwitter />, href: "#", label: "Twitter" },
+  { icon: <FaThreads />, href: "https://www.threads.com/@kodandamedia?hl=en", label: "Threads" },
   { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/company/kodanda-media-and-entertainment-pvt-ltd/posts/?feedView=all", label: "LinkedIn" },
-  { icon: <FaFacebookF />, href: "#", label: "Facebook" },
-  { icon: <FaYoutube />, href: "#", label: "YouTube" },
+  { icon: <FaFacebookF />, href: "https://www.facebook.com/kodandamedia/", label: "Facebook" },
+  { icon: <FaYoutube />, href: "https://www.youtube.com/@kodandamedia.official", label: "YouTube" },
+  { icon: <FaWhatsapp />, href: "https://www.whatsapp.com/channel/0029VbCMxcf0gcfT3wYvJU0Y", label: "WhatsApp" },
 ];
 
 function scrollTo(id) {
@@ -61,17 +60,17 @@ export default function Footer() {
                 Kodanda <span className="text-[#C91111]">Media</span>
               </p>
               <p className="text-sm text-gray-400 leading-relaxed mb-5 max-w-xs">
-                Enterprise-grade digital marketing &amp; media solutions for
+                Enterprise grade digital marketing &amp; media solutions for
                 ambitious brands.
               </p>
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center gap-2">
                   <FiMail className="text-[#C91111] shrink-0" />
-                  <span>CEO@kodandamedia.com</span>
+                  <span>info@kodandamedia.com</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <FiPhone className="text-[#C91111] shrink-0" />
-                  <span>+91-9876543345</span>
+                  <span>+91 91 8085082069</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <FiMapPin className="text-[#C91111] shrink-0" />
@@ -80,7 +79,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Services */}
+            {/* brands */}
             <div>
               <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
                 Channels
