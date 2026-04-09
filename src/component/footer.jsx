@@ -15,7 +15,7 @@ const services = [
 
 const company = [
   { label: "Home", id: "home" },
-  { label: "About", id: "about" },
+  { label: "About Us", id: "about" },
   { label: "Portfolio", id: "portfolio" },
   { label: "Why Choose", id: "why-us" },
   { label: "FAQ", id: "faq" },
@@ -76,7 +76,7 @@ export default function Footer() {
 
             {/* Services */}
             <div>
-              <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Services</p>
+              <p className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Channels</p>
               <ul className="space-y-2 text-sm">
                 {services.map((s) => (
                   <li key={s}>

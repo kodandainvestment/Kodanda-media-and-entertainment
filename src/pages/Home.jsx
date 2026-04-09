@@ -1,5 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import DecryptedText from "../animations/DecryptedText ";
+import {
+  FaInstagram,
+  FaWhatsapp,
+  FaTwitter,
+  FaFacebook,
+  FaLinkedin,
+  FaYoutube,
+  FaPinterest,
+} from "react-icons/fa";
 
 export default function Dashboard() {
   const [decryptKey, setDecryptKey] = useState(0);
@@ -180,249 +189,39 @@ export default function Dashboard() {
       />
 
       {/* 3D Floating geometric shapes — hidden on mobile */}
+      {/* Floating Social Media Icons */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
-        {/* 3D Cube */}
-        <div
-          className="absolute floating-shape perspective-container"
-          style={{
-            top: "15%",
-            left: "8%",
-            transform: `translate(${mousePos.x * 50}px, ${mousePos.y * 50}px)`,
-            transition: "transform 0.2s ease-out",
-          }}
-        >
-          <div
-            className="w-16 h-16 relative"
-            style={{
-              transformStyle: "preserve-3d",
-              animation: "rotate3d 20s linear infinite",
-            }}
-          >
+        {[
+          { Icon: FaInstagram, top: "15%", left: "8%" },
+          { Icon: FaWhatsapp, top: "70%", left: "10%" },
+          { Icon: FaTwitter, top: "20%", right: "12%" },
+          { Icon: FaFacebook, top: "60%", right: "8%" },
+          { Icon: FaYoutube, bottom: "20%", right: "15%" },
+          { Icon: FaPinterest, bottom: "25%", left: "20%" },
+          { Icon: FaLinkedin, top: "40%", left: "50%" },
+        ].map((item, i) => {
+          const Icon = item.Icon;
+          return (
             <div
-              className="absolute w-full h-full bg-gradient-to-br from-[#C91111] to-[#ff6b6b] opacity-80"
-              style={{ transform: "translateZ(32px)" }}
-            />
-            <div
-              className="absolute w-full h-full bg-gradient-to-br from-[#a50e0e] to-[#C91111] opacity-80"
-              style={{ transform: "rotateY(180deg) translateZ(32px)" }}
-            />
-            <div
-              className="absolute w-full h-full bg-gradient-to-br from-[#7f1d1d] to-[#a50e0e] opacity-80"
-              style={{ transform: "rotateY(-90deg) translateZ(32px)" }}
-            />
-            <div
-              className="absolute w-full h-full bg-gradient-to-br from-[#ef4444] to-[#C91111] opacity-80"
-              style={{ transform: "rotateY(90deg) translateZ(32px)" }}
-            />
-            <div
-              className="absolute w-full h-full bg-gradient-to-br from-[#fca5a5] to-[#ef4444] opacity-80"
-              style={{ transform: "rotateX(90deg) translateZ(32px)" }}
-            />
-            <div
-              className="absolute w-full h-full bg-gradient-to-br from-[#C91111] to-[#7f1d1d] opacity-80"
-              style={{ transform: "rotateX(-90deg) translateZ(32px)" }}
-            />
-          </div>
-        </div>
-
-        {/* 3D Pyramid / Tetrahedron */}
-        <div
-          className="absolute floating-shape-reverse"
-          style={{
-            top: "20%",
-            right: "12%",
-            transform: `translate(${mousePos.x * -40}px, ${mousePos.y * -40}px)`,
-            transition: "transform 0.2s ease-out",
-          }}
-        >
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 100 100"
-            style={{ animation: "bounce3d 4s ease-in-out infinite" }}
-          >
-            <defs>
-              <linearGradient
-                id="pyramidGrad1"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="#C91111" />
-                <stop offset="100%" stopColor="#ff4444" />
-              </linearGradient>
-              <linearGradient
-                id="pyramidGrad2"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="#7f1d1d" />
-                <stop offset="100%" stopColor="#C91111" />
-              </linearGradient>
-            </defs>
-            <polygon
-              points="50,10 10,80 50,60"
-              fill="url(#pyramidGrad1)"
-              opacity="0.9"
-            />
-            <polygon
-              points="50,10 90,80 50,60"
-              fill="url(#pyramidGrad2)"
-              opacity="0.8"
-            />
-            <polygon points="10,80 90,80 50,60" fill="#a50e0e" opacity="0.7" />
-          </svg>
-        </div>
-
-        {/* Floating rings */}
-        <div
-          className="absolute"
-          style={{
-            bottom: "25%",
-            left: "5%",
-            transform: `translate(${mousePos.x * 60}px, ${mousePos.y * 60}px)`,
-            transition: "transform 0.2s ease-out",
-          }}
-        >
-          <div
-            className="w-24 h-24 border-4 border-[#C91111]/40 rounded-full"
-            style={{
-              animation:
-                "float 5s ease-in-out infinite, rotate3d 15s linear infinite",
-            }}
-          />
-          <div
-            className="absolute top-2 left-2 w-20 h-20 border-2 border-[#ff6b6b]/30 rounded-full"
-            style={{ animation: "floatReverse 4s ease-in-out infinite" }}
-          />
-        </div>
-
-        {/* Orbiting dots */}
-        <div
-          className="absolute"
-          style={{
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-          }}
-        >
-          <div className="orbit-element absolute w-3 h-3 bg-[#C91111] rounded-full shadow-lg shadow-[#C91111]/50" />
-          <div
-            className="orbit-element-reverse absolute w-2 h-2 bg-[#ff6b6b] rounded-full shadow-lg shadow-[#ff6b6b]/50"
-            style={{ animationDelay: "-5s" }}
-          />
-          <div
-            className="orbit-element absolute w-4 h-4 bg-[#7f1d1d] rounded-full shadow-lg shadow-[#7f1d1d]/50"
-            style={{ animationDelay: "-10s" }}
-          />
-        </div>
-
-        {/* Floating spheres with 3D effect */}
-        <div
-          className="absolute floating-shape"
-          style={{
-            bottom: "15%",
-            right: "8%",
-            transform: `translate(${mousePos.x * -30}px, ${mousePos.y * -30}px)`,
-            transition: "transform 0.2s ease-out",
-          }}
-        >
-          <div
-            className="w-20 h-20 rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle at 30% 30%, #ff6b6b, #C91111 50%, #7f1d1d 100%)",
-              boxShadow:
-                "inset -5px -5px 20px rgba(0,0,0,0.3), 0 10px 30px rgba(201,17,17,0.4)",
-              animation: "pulse3d 4s ease-in-out infinite",
-            }}
-          />
-        </div>
-
-        {/* Small decorative spheres */}
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: `${8 + Math.random() * 16}px`,
-              height: `${8 + Math.random() * 16}px`,
-              background: `radial-gradient(circle at 30% 30%, ${
-                ["#ff6b6b", "#C91111", "#fca5a5", "#ef4444"][i % 4]
-              }, ${["#C91111", "#7f1d1d", "#ff6b6b", "#a50e0e"][i % 4]})`,
-              top: `${10 + Math.random() * 80}%`,
-              left: `${5 + Math.random() * 90}%`,
-              animation: `${i % 2 === 0 ? "float" : "floatReverse"} ${4 + Math.random() * 4}s ease-in-out infinite`,
-              animationDelay: `${-Math.random() * 5}s`,
-              boxShadow: "0 4px 15px rgba(201,17,17,0.3)",
-              opacity: 0.7,
-            }}
-          />
-        ))}
-
-        {/* Sparkles */}
-        {[...Array(12)].map((_, i) => (
-          <div
-            key={`sparkle-${i}`}
-            className="absolute sparkle"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 4}s`,
-            }}
-          >
-            <svg width="20" height="20" viewBox="0 0 20 20">
-              <path
-                d="M10 0 L11 8 L20 10 L11 12 L10 20 L9 12 L0 10 L9 8 Z"
-                fill={["#C91111", "#ff6b6b", "#fca5a5"][i % 3]}
-                opacity="0.6"
-              />
-            </svg>
-          </div>
-        ))}
-
-        {/* Animated lines */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-10"
-          style={{ pointerEvents: "none" }}
-        >
-          <defs>
-            <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#C91111" stopOpacity="0" />
-              <stop offset="50%" stopColor="#C91111" stopOpacity="1" />
-              <stop offset="100%" stopColor="#C91111" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M0,200 Q400,100 800,300 T1600,200"
-            stroke="url(#lineGrad)"
-            strokeWidth="2"
-            fill="none"
-            style={{
-              strokeDasharray: 1000,
-              animation: "drawLine 8s linear infinite",
-            }}
-          />
-          <path
-            d="M0,400 Q300,500 600,350 T1200,450"
-            stroke="url(#lineGrad)"
-            strokeWidth="1.5"
-            fill="none"
-            style={{
-              strokeDasharray: 1000,
-              animation: "drawLine 10s linear infinite",
-              animationDelay: "-3s",
-            }}
-          />
-        </svg>
+              key={i}
+              className={`absolute social-float-${i}`}
+              style={{
+                top: item.top,
+                left: item.left,
+                right: item.right,
+                bottom: item.bottom,
+              }}
+            >
+              <Icon className="text-[#C91111] text-3xl lg:text-4xl opacity-80 drop-shadow-md" />
+            </div>
+          );
+        })}
       </div>
 
       {/* Content */}
       <div className="relative z-20 flex flex-col items-center perspective-container px-4 w-full max-w-4xl mx-auto">
-        <p className="text-xs sm:text-sm lg:text-lg tracking-[0.15em] sm:tracking-[0.2em] uppercase text-gray-500 mb-3 sm:mb-6 text-center">Kodanda Media and 
+        <p className="text-xs sm:text-sm lg:text-lg tracking-[0.15em] sm:tracking-[0.2em] uppercase text-gray-500 mb-3 sm:mb-6 text-center">
+          Kodanda Media and
           <DecryptedText
             key={decryptKey}
             text=" Entertainment"
@@ -435,9 +234,9 @@ export default function Dashboard() {
             useOriginalCharsOnly={false}
           />
         </p>
-        
+
         <h1 className="headline-scale text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight max-w-5xl">
-           <span className="text-[#C91111]">Building </span>high-impact
+          <span className="text-[#C91111]">Building </span>high-impact
           <br />
           digital media <span className="text-[#C91111]">brands</span>
         </h1>

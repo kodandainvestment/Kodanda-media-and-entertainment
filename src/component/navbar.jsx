@@ -3,13 +3,13 @@ import logo from "../assets/Transparent-logo.png"
 
 const links = [
   { label: "Home", id: "home" },
-  { label: "About", id: "about" },
+  { label: "About Us", id: "about" },
   { label: "Channels", id: "chennals" },
-  { label: "Services", id: "services" },
-  { label: "Portfolio", id: "portfolio" },
-  { label: "Why Choose", id: "why-us" },
-  { label: "FAQ", id: "faq" },
-  { label: "Contact", id: "contact" },
+  // { label: "Viral Contact", id: "viral-content" },
+  { label: "Case Studies", id: "case-studies" },
+  // { label: "Growth & Vision", id: "growth-vision" },
+  // { label: "FAQ", id: "faq" },
+  { label: "Contact Us", id: "contact" },
 ];
 
 function scrollTo(id) {
