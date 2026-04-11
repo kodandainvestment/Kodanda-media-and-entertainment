@@ -940,15 +940,13 @@ export default function About() {
         {/* end two-column row */}
 
         {/* mission and vision section-3*/}
-        <div className="py-16 px-4">
-          {/* Heading */}
+        {/* <div className="py-16 px-4">
           <div className="text-center mb-12">
             <h3 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
               Mission<span className="text-[#C91111]"> & </span>Vision
             </h3>
           </div>
 
-          {/* Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {mission.map((v, i) => (
               <AnimatedCard
@@ -956,17 +954,14 @@ export default function About() {
                 delay={i * 0.1}
                 className="relative px-6 py-10 text-center"
               >
-                {/* Border Box */}
-                <div className="absolute inset-0 border-2 border-gray-600"></div>
+                <div className="absolute rounded-xl inset-0 border-2 border-gray-600"></div>
 
-                {/* Floating Heading */}
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#c91111] px-4 rounded-full">
                   <h2 className="font-serif text-xl font-bold text-gray-100 tracking-widest">
                     {v.Heading.toUpperCase()}
                   </h2>
                 </div>
 
-                {/* Content */}
                 <div className="mt-6 space-y-4">
                   {v.Text.split(".").map((line, idx) => (
                     <p
@@ -976,6 +971,35 @@ export default function About() {
                       {line.trim()}
                     </p>
                   ))}
+                </div>
+              </AnimatedCard>
+            ))}
+          </div>
+        </div> */}
+
+        <div>
+          <div className="text-center mb-10">
+            <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              Mission<span className="text-[#C91111]"> & </span>Vision
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {mission.map((v, i) => (
+              <AnimatedCard
+                key={v.Heading}
+                delay={i * 0.1}
+                className="value-card bg-white border border-gray-200 rounded-2xl p-6 flex gap-4 items-start shadow-sm"
+              >
+                <div className="val-icon w-11 h-11 rounded-xl bg-[#C91111]/10 flex items-center justify-center text-[#C91111] text-lg flex-shrink-0">
+                  {v.icon}
+                </div>
+                <div>
+                  <p className="text-gray-900 font-bold text-sm mb-1">
+                    {v.Heading}
+                  </p>
+                  <p className="text-gray-500 text-sm leading-relaxed">
+                    {v.Text}
+                  </p>
                 </div>
               </AnimatedCard>
             ))}

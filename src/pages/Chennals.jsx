@@ -326,8 +326,8 @@ export default function Channels() {
 
           {/* Right panel */}
           <div className="flex-1">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-1">{selected.title}</h3>
+            <div className="mb-2 sm:mb-6">
+              <h3 className="font-serif text-2xl font-bold text-gray-900 mb-1">{selected.title}</h3>
               <div className="w-10 h-1 rounded-full bg-[#C91111]" />
             </div>
             <div className="flex flex-col gap-4">
