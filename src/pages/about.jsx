@@ -217,6 +217,7 @@ function PageDecorations() {
   return (
     <div
       ref={containerRef}
+      className="hidden sm:block"
       style={{
         position: "absolute",
         inset: 0,
@@ -261,15 +262,15 @@ function PageDecorations() {
           color: #C91111;
         }
         .stat-icon { transition: transform 0.35s cubic-bezier(.34,1.56,.64,1); }
-        .stat-card::after {
-          content: '';
-          position: absolute; bottom: 0; left: 0;
-          width: 0; height: 3px;
-          background: linear-gradient(90deg, #C91111, #ff4444);
-          border-radius: 0 0 16px 16px;
-          transition: width 0.4s ease;
-        }
-        .stat-card:hover::after { width: 100%; }
+        // .stat-card::after {
+        //   content: '';
+        //   position: absolute; bottom: 0; left: 0;
+        //   width: 0; height: 3px;
+        //   background: linear-gradient(90deg, #C91111, #ff4444);
+        //   border-radius: 0 0 16px 16px;
+        //   transition: width 0.4s ease;
+        // }
+        // .stat-card:hover::after { width: 100%; }
 
         .timeline-card {
           transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -624,13 +625,12 @@ const iconStrip = [
   <FiCommand size={22} />,
   <FiBox size={22} />,
 ];
-
 function IconStrip() {
-  const doubled = [...iconStrip, ...iconStrip];
-  const total = doubled.length;
+  const loopItems = [...iconStrip, ...iconStrip, ...iconStrip];
+
   return (
     <div
-      className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden py-2"
+      className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden py-6 sm:py-8"
       style={{
         borderTop: "1px solid #f3f4f6",
         borderBottom: "1px solid #f3f4f6",
@@ -638,40 +638,55 @@ function IconStrip() {
     >
       <style>{`
         @keyframes scroll-ltr {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
         }
+
         .icon-strip-track {
           display: flex;
-          align-items: flex-end;
           width: max-content;
-          animation: scroll-ltr 22s linear infinite;
-          padding: 24px 0 32px;
+          animation: scroll-ltr 25s linear infinite;
         }
+
         .icon-strip-item {
-          transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+          flex-shrink: 0;
+          width: 48px;
+          height: 48px;
+          margin-right: 10px;
+          border-radius: 9999px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #f9f9f9;
+          border: 1.5px solid #f0f0f0;
+          color: #C91111;
+          box-shadow: 0 2px 8px rgba(201,17,17,0.07);
         }
-        .icon-strip-item:hover {
-          background: rgba(201,17,17,0.1) !important;
-          transform: translateY(-6px) scale(1.15) !important;
-          box-shadow: 0 8px 20px rgba(201,17,17,0.18) !important;
-          border-color: rgba(201,17,17,0.35) !important;
+
+        @media (min-width: 640px) {
+          .icon-strip-item {
+            width: 56px;
+            height: 56px;
+            margin-right: 12px;
+          }
         }
       `}</style>
+
       <div className="icon-strip-track">
-        {doubled.map((icon, i) => {
-          const angle = (i / (doubled.length / 2)) * Math.PI * 2;
+        {loopItems.map((icon, i) => {
+          // ✅ Curve ONLY on desktop
+          const angle = (i / iconStrip.length) * Math.PI * 2;
           const yOffset = Math.sin(angle) * 28;
+
           return (
             <div
               key={i}
-              className="icon-strip-item flex-shrink-0 mx-3 w-14 h-14 rounded-full flex items-center justify-center cursor-default"
+              className="icon-strip-item"
               style={{
-                background: "#f9f9f9",
-                border: "1.5px solid #f0f0f0",
-                color: "#C91111",
-                transform: `translateY(${yOffset}px)`,
-                boxShadow: "0 2px 8px rgba(201,17,17,0.07)",
+                transform:
+                  window.innerWidth >= 640
+                    ? `translateY(${yOffset}px)`
+                    : "translateY(0px)", // ✅ flat on mobile
               }}
             >
               {icon}
@@ -767,30 +782,50 @@ export default function About() {
           {/* <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
             We Build Brands <span className="text-[#C91111]">That Matter</span>
           </h2> */}
-          <h2 style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 900,
-                fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
-                lineHeight: 1.08,
-                letterSpacing: "-0.02em",
-                color: "#0f0f0f",
-                margin: "0 0 16px",
-              }}>
-                We Build Brands{" "}
-                <span style={{ color: "#C91111", position: "relative", display: "inline-block" }}>
-                  That Matters
-                  {/* Animated underline */}
-                  <svg viewBox="0 0 240 14" style={{
-                    position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
-                  }}>
-                    <path d="M 3 10 Q 120 3 237 10"
-                      stroke="#C91111" strokeWidth="3" fill="none"
-                      strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
-                      style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
-                    />
-                  </svg>
-                </span>
-              </h2>
+          <h2
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 900,
+              fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
+              color: "#0f0f0f",
+              margin: "0 0 16px",
+            }}
+          >
+            We Build Brands{" "}
+            <span
+              style={{
+                color: "#C91111",
+                position: "relative",
+                display: "inline-block",
+              }}
+            >
+              That Matters
+              {/* Animated underline */}
+              <svg
+                viewBox="0 0 240 14"
+                style={{
+                  position: "absolute",
+                  bottom: -6,
+                  left: 0,
+                  width: "100%",
+                  overflow: "visible",
+                }}
+              >
+                <path
+                  d="M 3 10 Q 120 3 237 10"
+                  stroke="#C91111"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeDasharray="300"
+                  strokeDashoffset="300"
+                  style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+                />
+              </svg>
+            </span>
+          </h2>
           <p className="text-gray-800 text-base leading-relaxed mb-4">
             Kodanda Media & Entertainment is a multi-channel digital media
             ecosystem built to inform, inspire, and influence millions across
@@ -800,10 +835,9 @@ export default function About() {
             production approach.
           </p>
 
-         
           <div className="mt-10">
             {/* Mobile Scroll */}
-            <div className="flex gap-4 overflow-x-auto sm:hidden no-scrollbar px-1">
+            <div className="grid grid-cols-2 gap-4 sm:hidden">
               {stats.map((s, i) => {
                 const num = parseInt(s.value);
                 const suffix = s.value.replace(String(num), "");
@@ -814,21 +848,20 @@ export default function About() {
                     delay={i * 0.1}
                     className="flex-shrink-0"
                   >
-                    <div className="w-36 h-36 rounded-full border-t-4 border-l-4 border-[#C91111]/20 flex items-center justify-center">
-                      <div className="w-28 h-28 rounded-full border-r-4 border-b-4 border-[#C91111] flex items-center justify-center bg-white shadow-sm">
-                        <div className="flex flex-col items-center text-center px-2">
-                          <div className="text-[#C91111] text-xl mb-1">
-                            {s.icon}
-                          </div>
-                          <p className="text-gray-900 font-extrabold text-base">
-                            <CountUp from={0} to={num} duration={1} />
-                            {suffix}
-                          </p>
-                          <p className="text-gray-500 text-[10px] mt-1">
-                            {s.label}
-                          </p>
+                    <div className="stat-card w-36 h-36 rounded-full border-t-4 border-l-4 border-[#C91111]/20 flex items-center justify-center">                      <div className="w-28 h-28 rounded-full border-r-4 border-b-4 border-[#C91111] flex items-center justify-center bg-white shadow-sm">
+                      <div className="flex flex-col items-center text-center px-2">
+                        <div className="stat-icon text-[#C91111] text-xl mb-1">
+                          {s.icon}
                         </div>
+                        <p className="text-gray-900 font-extrabold text-base">
+                          <CountUp from={0} to={num} duration={1} />
+                          {suffix}
+                        </p>
+                        <p className="text-gray-500 text-[10px] mt-1">
+                          {s.label}
+                        </p>
                       </div>
+                    </div>
                     </div>
                   </AnimatedCard>
                 );
@@ -843,21 +876,20 @@ export default function About() {
 
                 return (
                   <AnimatedCard key={s.label} delay={i * 0.1}>
-                    <div className="w-44 h-44 rounded-full border-t-4 border-l-4 border-[#C91111]/20 flex items-center justify-center">
-                      <div className="w-36 h-36 rounded-full border-r-4 border-b-4 border-[#C91111] flex items-center justify-center bg-white shadow-sm">
-                        <div className="flex flex-col items-center text-center px-2">
-                          <div className="text-[#C91111] text-2xl mb-1">
-                            {s.icon}
-                          </div>
-                          <p className="text-gray-900 font-extrabold text-lg">
-                            <CountUp from={0} to={num} duration={1} />
-                            {suffix}
-                          </p>
-                          <p className="text-gray-500 text-xs mt-1">
-                            {s.label}
-                          </p>
+                    <div className="stat-card w-44 h-44 rounded-full border-t-4 border-l-4 border-[#C91111]/20 flex items-center justify-center">                      <div className="w-36 h-36 rounded-full border-r-4 border-b-4 border-[#C91111] flex items-center justify-center bg-white shadow-sm">
+                      <div className="flex flex-col items-center text-center px-2">
+                        <div className="stat-icon text-[#C91111] text-2xl mb-1">
+                          {s.icon}
                         </div>
+                        <p className="text-gray-900 font-extrabold text-lg">
+                          <CountUp from={0} to={num} duration={1} />
+                          {suffix}
+                        </p>
+                        <p className="text-gray-500 text-xs mt-1">
+                          {s.label}
+                        </p>
                       </div>
+                    </div>
                     </div>
                   </AnimatedCard>
                 );
@@ -874,7 +906,7 @@ export default function About() {
               {/* <p className="text-[#C91111] text-xs tracking-widest uppercase mb-3 font-semibold">
               Our Journey
             </p> */}
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              <h3 className="font-serif text-3xl sm:text-4xl font-extrabold text-gray-900">
                 Who We <span className="text-[#C91111]">Are</span>
               </h3>
               <p className="text-gray-800 text-base mt-3 leading-relaxed">
@@ -891,7 +923,7 @@ export default function About() {
           {/* What we do section-2*/}
           <div>
             <div className="mb-8">
-              <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+              <h3 className="font-serif text-3xl sm:text-4xl font-extrabold text-gray-900">
                 What We <span className="text-[#C91111]">Do</span>
               </h3>
               <p className="text-gray-800 leading-relaxed mt-3">
@@ -908,29 +940,42 @@ export default function About() {
         {/* end two-column row */}
 
         {/* mission and vision section-3*/}
-        <div>
-          <div className="text-center mb-10">
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+        <div className="py-16 px-4">
+          {/* Heading */}
+          <div className="text-center mb-12">
+            <h3 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
               Mission<span className="text-[#C91111]"> & </span>Vision
             </h3>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          {/* Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {mission.map((v, i) => (
               <AnimatedCard
                 key={v.Heading}
                 delay={i * 0.1}
-                className="value-card bg-white border border-gray-200 rounded-2xl p-6 flex gap-4 items-start shadow-sm"
+                className="relative px-6 py-10 text-center"
               >
-                <div className="val-icon w-11 h-11 rounded-xl bg-[#C91111]/10 flex items-center justify-center text-[#C91111] text-lg flex-shrink-0">
-                  {v.icon}
+                {/* Border Box */}
+                <div className="absolute inset-0 border-2 border-gray-600"></div>
+
+                {/* Floating Heading */}
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#c91111] px-4 rounded-full">
+                  <h2 className="font-serif text-xl font-bold text-gray-100 tracking-widest">
+                    {v.Heading.toUpperCase()}
+                  </h2>
                 </div>
-                <div>
-                  <p className="text-gray-900 font-bold text-sm mb-1">
-                    {v.Heading}
-                  </p>
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {v.Text}
-                  </p>
+
+                {/* Content */}
+                <div className="mt-6 space-y-4">
+                  {v.Text.split(".").map((line, idx) => (
+                    <p
+                      key={idx}
+                      className="text-[#c91111] font-semibold text-sm tracking-wide"
+                    >
+                      {line.trim()}
+                    </p>
+                  ))}
                 </div>
               </AnimatedCard>
             ))}

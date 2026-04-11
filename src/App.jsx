@@ -2,17 +2,11 @@ import { useState } from "react";
 import Navbar from "./component/navbar";
 import Footer from "./component/footer";
 import Dashboard from "./pages/Home";
-import Services from "./pages/services";
 import Contact from "./pages/contact";
-import Portfolio from "./pages/portfolio";
 import FAQ from "./pages/FAQ";
 import About from "./pages/about";
-import WhyUs from "./pages/whyUs";
-import Loader from "./component/Loader";
 import Chennals from "./pages/Chennals";
 import ViralContent from "./pages/ViralContent";
-import ProductionSystem from "./pages/ProductionSystem";
-import HowKodandaDiff from "./pages/HowKodandaDiff";
 import CaseStudies from "./pages/CaseStudies";
 import GrowthAndVision from "./pages/Growth&Vision";
 
@@ -24,20 +18,18 @@ export default function App() {
       {/* {!loaded && <Loader onDone={() => setLoaded(true)} />}
       <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease" }}>*/}
         <Navbar />
-        <div className="pt-[72px]"> 
-          <section id="home" style={{ height: "90vh", overflow: "hidden" }}>
+        {/* <div className="pt-[72px]">  */}
+                <div className="pt-[20px]"> 
+
+          {/* <section id="home" style={{ height: "90vh", overflow: "hidden" }}>
             <Dashboard />
-          </section>
+          </section> */}
+          <section id="home"><Dashboard /> </section>
           <section id="about"><About /></section>
           <section id="chennals"><Chennals /></section>
           <section id="viral-content"><ViralContent /></section>
-          {/* <section id="production-system"><ProductionSystem /></section> */}
-          {/* <section id="how-kodanda-diff"><HowKodandaDiff /></section> */}
           <section id="case-studies"><CaseStudies /></section>
           <section id="growth-vision"><GrowthAndVision /></section>
-          {/* <section id="services"><Services /></section> */}
-          {/* <section id="portfolio"><Portfolio /></section>
-          <section id="why-us"><WhyUs /></section> */}
           <section id="faq"><FAQ /></section>
           <section id="contact"><Contact /></section>
         </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import DecryptedText from "../animations/DecryptedText ";
-import { FaInstagram, FaWhatsapp, FaPinterest} from "react-icons/fa";
+import { FaInstagram, FaWhatsapp, FaPinterest } from "react-icons/fa";
 import { FaThreads } from "react-icons/fa6";
 import { FiTwitter } from "react-icons/fi";
 import { CiFacebook, CiLinkedin, CiYoutube } from "react-icons/ci";
@@ -34,7 +34,7 @@ export default function Dashboard() {
   return (
     <section
       ref={containerRef}
-      className="bg-gradient-to-br from-white via-gray-50 to-white h-[100vh] w-full flex flex-col items-center justify-center text-center px-6 relative overflow-hidden"
+      className="bg-white via-gray-50 to-white h-[100vh] w-full flex flex-col items-center justify-center text-center px-6 relative overflow-hidden"
     >
       {/* Enhanced animations and keyframes */}
       <style>{`
@@ -192,11 +192,10 @@ export default function Dashboard() {
           { Icon: FaWhatsapp, top: "50%", left: "10%" },
           { Icon: FiTwitter, top: "20%", right: "12%" },
           { Icon: CiFacebook, top: "50%", right: "8%" },
-          { Icon: CiYoutube , bottom: "20%", right: "15%" },
+          { Icon: CiYoutube, bottom: "20%", right: "15%" },
           { Icon: AiOutlinePinterest, bottom: "25%", left: "20%" },
-          { Icon: CiLinkedin , top: "10%", left: "30%" },
-          { Icon: FaThreads , bottom: "35%", right: "25%" },
-
+          { Icon: CiLinkedin, top: "10%", left: "30%" },
+          { Icon: FaThreads, bottom: "35%", right: "25%" },
         ].map((item, i) => {
           const Icon = item.Icon;
           return (
@@ -233,51 +232,54 @@ export default function Dashboard() {
           />
         </p>
 
-        {/* <h1 className="headline-scale text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight max-w-5xl">
-          <span className="text-[#C91111]">Building </span>high-impact
-          <br />
-          digital media <span className="text-[#C91111]">brands</span>
-        </h1> */}
-        <h1 style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 900,
-                fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
-                lineHeight: 1.08,
-                letterSpacing: "-0.02em",
-                color: "#0f0f0f",
-                margin: "0 0 16px",
-              }}>
-                <span className="text-[#c91111]">Building </span>high-impact
-                digital media{" "}
-                <span style={{ color: "#C91111", position: "relative", display: "inline-block" }}>
-                  brands
-                  {/* Animated underline */}
-                  <svg viewBox="0 0 240 14" style={{
-                    position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
-                  }}>
-                    <path d="M 3 10 Q 120 3 237 10"
-                      stroke="#C91111" strokeWidth="3" fill="none"
-                      strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
-                      style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
-                    />
-                  </svg>
-                </span>
-              </h1>
-
-        {/* <h1
-          className="headline-scale text-3xl sm:text-5xl lg:text-7xl font-medium text-gray-900 leading-tight text-center"
-          style={{ fontFamily: "'Gadugi', sans-serif" }}
+        <h1
+          style={{
+            fontFamily: "'Playfair Display', Georgia, serif",
+            fontWeight: 900,
+            fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
+            lineHeight: 1.08,
+            letterSpacing: "-0.02em",
+            color: "#0f0f0f",
+            margin: "0 0 16px",
+          }}
         >
-          We Build{" "}
-          <span className="gradient-text font-extrabold">
-            Digital Legacies{" "}
+          <span className="text-[#c91111]">Building </span>high-impact digital
+          media{" "}
+          <span
+            style={{
+              color: "#C91111",
+              position: "relative",
+              display: "inline-block",
+            }}
+          >
+            brands
+            {/* Animated underline */}
+            <svg
+              viewBox="0 0 240 14"
+              style={{
+                position: "absolute",
+                bottom: -6,
+                left: 0,
+                width: "100%",
+                overflow: "visible",
+              }}
+            >
+              <path
+                d="M 3 10 Q 120 3 237 10"
+                stroke="#C91111"
+                strokeWidth="3"
+                fill="none"
+                strokeLinecap="round"
+                strokeDasharray="300"
+                strokeDashoffset="300"
+                style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+              />
+            </svg>
           </span>
-          <br className="hidden sm:block" /> that{" "}
-          <span className="gradient-text font-extrabold">Captivate </span>
-          Millions
-        </h1> */}
+        </h1>
+
         {/* ── Bottom-center arc decoration ── */}
-        <svg
+        {/* <svg
           width="320"
           height="90"
           viewBox="0 0 320 80"
@@ -307,7 +309,7 @@ export default function Dashboard() {
             strokeDasharray="4 6"
             strokeLinecap="round"
           />
-        </svg>
+        </svg> */}
 
         <p
           className="mt-5 sm:mt-8 text-gray-500 text-sm sm:text-base lg:text-lg max-w-xl text-center px-2"
@@ -344,6 +346,42 @@ export default function Dashboard() {
             <span className="relative z-10">Build Viral Content Together</span>
           </button>
         </div>
+        {/* ── Bottom-center arc decoration ── */}
+        <svg
+          width="320"
+          height="90"
+          viewBox="0 0 320 80"
+          className="
+  hidden
+  sm:block
+  sm:absolute
+  sm:bottom-[40px]
+  left-1/2
+  -translate-x-1/2
+"
+          style={{
+            opacity: 0.35,
+            pointerEvents: "none",
+          }}
+          aria-hidden="true"
+        >
+          <path
+            d="M 10 70 Q 160 10 310 70"
+            stroke="#C91111"
+            strokeWidth="2"
+            fill="none"
+            strokeDasharray="6 4"
+            strokeLinecap="round"
+          />
+          <path
+            d="M 40 70 Q 160 25 280 70"
+            stroke="#C91111"
+            strokeWidth="1"
+            fill="none"
+            strokeDasharray="4 6"
+            strokeLinecap="round"
+          />
+        </svg>
       </div>
 
       {/* Bottom wave decoration */}

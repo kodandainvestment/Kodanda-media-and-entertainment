@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, useMotionValue, animate } from "motion/react";
+import { FaInstagram, FaYoutube, FaFacebookF, FaTwitter,FaPinterest, FaLinkedinIn, FaWhatsapp,  } from "react-icons/fa";
+import { FaThreads } from "react-icons/fa6";
 
 const categories = [
   { title: "Educational" },
@@ -129,14 +131,49 @@ function OrbitDiagram({ active, setActive }) {
       <circle cx={CX} cy={CY} r={CENTER_R} fill="#000" stroke="#C91111" strokeWidth="2.5" />
 
       {/* YouTube logo in center */}
-      <g transform={`translate(${CX - 30}, ${CY - 22})`}>
-        {/* YouTube red background rect */}
-        <rect x="0" y="0" width="60" height="42" rx="10" ry="10" fill="#C91111" />
-        {/* Play triangle */}
-        <polygon points="24,12 24,30 42,21" fill="white" />
-      </g>
+      {/* Center Social Media Circle */}
+<foreignObject
+  x={CX - 70}
+  y={CY - 70}
+  width="140"
+  height="140"
+>
+  <div className="w-full h-full relative flex items-center justify-center">
+
+    {/* Center Red Logo */}
+    <div className="w-12 h-12 rounded-full bg-[#C91111] flex items-center justify-center shadow-md z-10">
+      <FaYoutube className="text-white text-lg" />
+    </div>
+
+    {/* Radial Social Icons */}
+    {/* Top */}
+    <FaInstagram className="absolute -top-0 left-1/2 -translate-x-1/2 text-white text-sm" />
+
+    {/* Top Right */}
+    <FaFacebookF className="absolute top-3 right-2 text-white text-sm" />
+
+    {/* Right */}
+    <FaTwitter className="absolute top-1/2 -translate-y-1/2 -right-1 text-white text-sm" />
+
+    {/* Bottom Right */}
+    <FaPinterest className="absolute bottom-3 right-2 text-white text-sm" />
+
+    {/* Bottom */}
+    <FaThreads className="absolute -bottom-0 left-1/2 -translate-x-1/2 text-white text-sm" />
+
+    {/* Bottom Left */}
+    <FaYoutube className="absolute bottom-3 left-2 text-white text-sm" />
+
+    {/* Left */}
+    <FaLinkedinIn className="absolute top-1/2 -translate-y-1/2 -left-1 text-white text-sm" />
+
+    {/* Top Left */}
+    <FaWhatsapp className="absolute top-3 left-2 text-white text-sm" />
+
+  </div>
+</foreignObject>
       {/* Category name below logo */}
-      {(() => {
+      {/* {(() => {
         const words = categories[active].title.split(" ");
         const mid = Math.ceil(words.length / 2);
         const l1 = words.slice(0, mid).join(" ");
@@ -149,7 +186,7 @@ function OrbitDiagram({ active, setActive }) {
         ) : (
           <text x={CX} y={CY + 50} textAnchor="middle" fontSize="12" fill="#fff" fontWeight="700">{l1}</text>
         );
-      })()}
+      })()} */}
 
       {/* Category nodes */}
       {categories.map((cat, i) => {
@@ -312,3 +349,419 @@ export default function Channels() {
     </section>
   );
 }
+
+// import { motion } from "framer-motion";
+
+// const channels = [
+//   "FactVerse India",
+//   "GeoGyaan India",
+//   "History Bytes",
+//   "MoneyCraft India",
+//   "Business Stories India",
+//   "Motivation Factory",
+//   "Zero to Hero Talks",
+//   "Bollywood Inside",
+//   "Future Tech India",
+//   "Spiritual Talks India",
+// ];
+
+// function Orbit({ radius, speed, name, index }) {
+//   return (
+//     <div
+//       className="absolute"
+//       style={{
+//         width: radius * 2,
+//         height: radius * 2,
+//         left: 0,
+//         top: "50%",
+//         transform: "translateY(-50%)",
+//       }}
+//     >
+//       {/* Orbit Ring */}
+//       <div className="absolute w-full h-full rounded-full border border-dashed border-gray-300" />
+
+//       {/* Rotation */}
+//       <motion.div
+//         className="absolute w-full h-full"
+//         animate={{ rotate: 360 }}
+//         transition={{
+//           repeat: Infinity,
+//           duration: speed,
+//           ease: "linear",
+//         }}
+//       >
+//         {/* Single Planet */}
+//         <div
+//           className="absolute left-1/2 top-1/2 group cursor-pointer"
+//           style={{
+//             transform: `rotate(${index * 36}deg) translateY(-${radius}px)`,
+//           }}
+//         >
+//           {/* 🔴 Planet (Logo Placeholder) */}
+//           <div className="w-10 h-10 rounded-full bg-[#C91111] flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-300" />
+
+//           {/* 🏷️ Hover Label */}
+//           <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+//             <p className="text-xs font-semibold text-[#C91111] bg-white px-3 py-1 rounded-md shadow">
+//               {name}
+//             </p>
+//           </div>
+//         </div>
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+// export default function Channels() {
+//   return (
+//     <section className="bg-white py-20 px-6 overflow-hidden">
+//       <div className="w-full max-w-7xl mx-auto relative flex items-center">
+
+//         {/* 🌑 LEFT (K-MEDIA SUN) */}
+//         <div className="relative z-10 w-[260px] h-[260px] flex-shrink-0">
+//           <div className="w-full h-full rounded-full bg-black border-4 border-[#C91111] flex items-center justify-center shadow-lg">
+//             <p className="text-white font-bold text-lg text-center px-4">
+//               K-Media
+//             </p>
+//           </div>
+//         </div>
+
+//         {/* 🪐 RIGHT SIDE ORBITS */}
+//         <div className="relative flex-1 h-[700px]">
+
+//           {channels.map((name, i) => {
+//             const radius = 150 + i * 35;     // spacing between orbits
+//             const speed = 20 + i * 5;       // different speed per orbit
+
+//             return (
+//               <Orbit
+//                 key={name}
+//                 radius={radius}
+//                 speed={speed}
+//                 name={name}
+//                 index={i}
+//               />
+//             );
+//           })}
+
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
+
+// import { motion } from "framer-motion";
+
+// const channels = [
+//   "FactVerse India",
+//   "GeoGyaan India",
+//   "History Bytes",
+//   "MoneyCraft India",
+//   "Business Stories India",
+//   "Motivation Factory",
+//   "Zero to Hero Talks",
+//   "Bollywood Inside",
+//   "Future Tech India",
+//   "Spiritual Talks India",
+// ];
+
+// function Orbit({ radius, speed, name, index }) {
+//   return (
+//     <div
+//       className="absolute flex items-center justify-center"
+//       style={{
+//         width: radius * 2,
+//         height: radius * 2,
+//       }}
+//     >
+//       {/* Orbit Ring */}
+//       <div className="absolute w-full h-full rounded-full border border-dashed border-gray-300" />
+
+//       {/* Rotation */}
+//       <motion.div
+//         className="absolute w-full h-full"
+//         animate={{ rotate: 360 }}
+//         transition={{
+//           repeat: Infinity,
+//           duration: speed,
+//           ease: "linear",
+//         }}
+//       >
+//         {/* Planet */}
+//         <div
+//           className="absolute top-1/2 left-1/2 group"
+//           style={{
+//             transform: `rotate(${index * 36}deg) translateX(${radius}px)`,
+//             transformOrigin: "0 0",
+//           }}
+//         >
+//           <div className="w-8 h-8 rounded-full bg-[#C91111] shadow-lg hover:scale-110 transition-all duration-300" />
+
+//           {/* Label */}
+//           <div className="absolute top-10 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition">
+//             <p className="text-xs font-semibold text-[#C91111] bg-white px-2 py-1 rounded shadow whitespace-nowrap">
+//               {name}
+//             </p>
+//           </div>
+//         </div>
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+// export default function Channels() {
+//   return (
+//     <section className="bg-white h-screen w-full overflow-hidden flex items-center justify-center">
+
+//       {/* 🌌 Orbit System Container */}
+//       <div className="relative w-full max-w-[1800px] h-[300px] flex items-center justify-center">
+
+//         {/* 🌑 CENTER SUN */}
+//         <div className="absolute z-20 w-[220px] h-[220px]">
+//           <div className="w-full h-full rounded-full bg-black border-4 border-[#C91111] flex items-center justify-center shadow-xl">
+//             <p className="text-white font-bold text-lg text-center">
+//               K-Media
+//             </p>
+//           </div>
+//         </div>
+
+//         {/* 🪐 ORBITS */}
+//         {channels.map((name, i) => {
+//           const radius = 150 + i * 30;   // tighter spacing
+//           const speed = 18 + i * 4;
+
+//           return (
+//             <Orbit
+//               key={name}
+//               radius={radius}
+//               speed={speed}
+//               name={name}
+//               index={i}
+//             />
+//           );
+//         })}
+//       </div>
+//     </section>
+//   );
+// }
+
+// import { motion } from "framer-motion";
+
+// const channels = [
+//   "FactVerse India",
+//   "GeoGyaan India",
+//   "History Bytes",
+//   "MoneyCraft India",
+//   "Business Stories India",
+//   "Motivation Factory",
+//   "Zero to Hero Talks",
+//   "Bollywood Inside",
+//   "Future Tech India",
+//   "Spiritual Talks India",
+// ];
+
+// function Orbit({ radius, speed, name, index }) {
+//   return (
+//     <div
+//       className="absolute"
+//       style={{
+//         width: radius * 2,
+//         height: radius * 2,
+//         left: 0,                 // 🔥 CENTER AT LEFT
+//         top: "50%",
+//         transform: "translateY(-50%)",
+//       }}
+//     >
+//       {/* Orbit Line (Arc effect) */}
+//       <div className="absolute w-full h-full rounded-full border border-gray-300 opacity-60" />
+
+//       {/* Rotation */}
+//       <motion.div
+//         className="absolute w-full h-full"
+//         animate={{ rotate: 360 }}
+//         transition={{
+//           repeat: Infinity,
+//           duration: speed,
+//           ease: "linear",
+//         }}
+//       >
+//         {/* Planet */}
+//         <div
+//           className="absolute top-1/2 left-1/2 group"
+//           style={{
+//             transform: `rotate(${index * 40}deg) translateX(${radius}px)`,
+//             transformOrigin: "0 0",
+//           }}
+//         >
+//           {/* Planet UI */}
+//           <div className="w-10 h-10 rounded-full bg-[#C91111] shadow-lg hover:scale-110 transition-all duration-300" />
+
+//           {/* Label */}
+//           <div className="absolute top-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition">
+//             <p className="text-xs font-semibold text-[#C91111] bg-white px-2 py-1 rounded shadow whitespace-nowrap">
+//               {name}
+//             </p>
+//           </div>
+//         </div>
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+// export default function Channels() {
+//   return (
+//     <section className="bg-black h-screen w-full overflow-hidden flex items-center">
+
+//       {/* LEFT SUN */}
+//       <div className="relative z-20 w-[220px] h-[220px] ml-10 flex-shrink-0">
+//         <div className="w-full h-full rounded-full bg-black border-4 border-[#C91111] flex items-center justify-center shadow-[0_0_40px_#C91111]">
+//           <p className="text-white font-bold text-lg">K-Media</p>
+//         </div>
+//       </div>
+
+//       {/* ORBIT AREA */}
+//       <div className="relative flex-1 h-[400px]">
+
+//         {channels.map((name, i) => {
+//           const radius = 120 + i * 50;   // spread wide like solar system
+//           const speed = 25 + i * 6;
+
+//           return (
+//             <Orbit
+//               key={name}
+//               radius={radius}
+//               speed={speed}
+//               name={name}
+//               index={i}
+//             />
+//           );
+//         })}
+
+//       </div>
+//     </section>
+//   );
+// }
+
+// import { motion } from "framer-motion";
+
+// const channels = [
+//   "FactVerse India",
+//   "GeoGyaan India",
+//   "History Bytes",
+//   "MoneyCraft India",
+//   "Business Stories India",
+//   "Motivation Factory",
+//   "Zero to Hero Talks",
+//   "Bollywood Inside",
+//   "Future Tech India",
+//   "Spiritual Talks India",
+// ];
+
+// function Orbit({ radius, speed, name, index }) {
+//   return (
+//     <div
+//       className="absolute"
+//       style={{
+//         width: radius * 2,
+//         height: radius * 2,
+//         left: "0px",
+//         top: "50%",
+//         transform: "translateY(-50%)",
+//       }}
+//     >
+//       {/* Orbit Ring */}
+//       <div className="absolute w-full h-full rounded-full border border-gray-400/60" />
+
+//       {/* Rotation */}
+//       <motion.div
+//         className="absolute w-full h-full"
+//         animate={{ rotate: 360 }}
+//         transition={{
+//           repeat: Infinity,
+//           duration: speed,
+//           ease: "linear",
+//         }}
+//       >
+//         {/* Planet */}
+//         <div
+//           className="absolute top-1/2 left-1/2 group cursor-pointer"
+//           style={{
+//             transform: `rotate(${index * 35}deg) translateX(${radius}px)`,
+//             transformOrigin: "0 0",
+//           }}
+//         >
+//           {/* Planet UI */}
+//           <div className="w-14 h-14 rounded-full bg-[#C91111] shadow-[0_0_20px_#C91111] transition duration-300 group-hover:scale-110" />
+
+//           {/* Label */}
+//           <div className="absolute left-1/2 top-[70px] -translate-x-1/2 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300 pointer-events-none">
+//             <p className="text-sm font-semibold text-white bg-[#C91111] px-3 py-1.5 rounded-md shadow-lg whitespace-nowrap">
+//               {name}
+//             </p>
+//           </div>
+//         </div>
+//       </motion.div>
+//     </div>
+//   );
+// }
+
+// export default function Channels() {
+//   return (
+//     <section className="bg-black w-full overflow-hidden">
+      
+//       {/* ✅ MOBILE LAYOUT */}
+//       <div className="md:hidden px-4 py-12">
+        
+//         {/* Center Logo */}
+//         <div className="flex justify-center mb-10">
+//           <div className="w-32 h-32 rounded-full border-4 border-[#C91111] flex items-center justify-center shadow-[0_0_25px_#C91111]">
+//             <p className="text-white font-bold text-sm text-center">
+//               K-Media
+//             </p>
+//           </div>
+//         </div>
+
+//         {/* Channels Grid */}
+//         <div className="grid grid-cols-2 gap-4">
+//           {channels.map((name) => (
+//             <div
+//               key={name}
+//               className="bg-[#111] border border-[#C91111]/30 rounded-xl p-4 text-center text-white text-sm font-medium hover:border-[#C91111] hover:shadow-[0_0_15px_#C91111] transition-all duration-300 active:scale-95"
+//             >
+//               {name}
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+
+//       {/* ✅ DESKTOP ORBIT LAYOUT */}
+//       <div className="hidden md:flex relative w-full h-[650px] items-center">
+//         <div className="relative w-full h-full">
+          
+//           {/* Center Core */}
+//           <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20">
+//             <div className="w-[260px] h-[260px] rounded-full bg-black border-4 border-[#C91111] flex items-center justify-center shadow-[0_0_60px_#C91111]">
+//               <p className="text-white font-bold text-xl">K-Media</p>
+//             </div>
+//           </div>
+
+//           {/* Orbits */}
+//           {channels.map((name, i) => {
+//             const radius = 160 + i * 55;
+//             const speed = 30 + i * 6;
+
+//             return (
+//               <Orbit
+//                 key={name}
+//                 radius={radius}
+//                 speed={speed}
+//                 name={name}
+//                 index={i}
+//               />
+//             );
+//           })}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }

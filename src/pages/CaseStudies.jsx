@@ -118,21 +118,15 @@ export default function CaseStudies() {
             Case Studies /
             <span className="text-[#C91111] relative inline-block">
               Proof
-              <svg
-                viewBox="0 0 100 14"
-                className="absolute -bottom-1.5 left-0 w-full overflow-visible"
-              >
-                <path
-                  d="M 3 10 Q 50 3 97 10"
-                  stroke="#C91111"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeDasharray="300"
-                  strokeDashoffset="300"
-                  className="anim-draw-line"
-                />
-              </svg>
+              <svg viewBox="0 0 240 14" style={{
+                    position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
+                  }}>
+                    <path d="M 3 10 Q 120 3 237 10"
+                      stroke="#C91111" strokeWidth="3" fill="none"
+                      strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
+                      style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+                    />
+                  </svg>
             </span>
           </h2>
           <div className="max-w-3xl mx-auto space-y-3">
@@ -281,46 +275,94 @@ export default function CaseStudies() {
             Performance Metrics
           </h3>
 
-          {/* Mobile Scroll */}
-          <div className="flex gap-4 overflow-x-auto sm:hidden no-scrollbar px-1">
-            {metrics.map((m) => (
-              <div key={m.label} className="flex-shrink-0">
-                <div className="w-28 h-28 rounded-full bg-white border-2 border-[#C91111] flex flex-col items-center justify-center text-center">
-                  <div className="text-[#C91111] mb-1">{m.icon}</div>
+          {/* ✅ MOBILE */}
+          <div className="grid grid-cols-2 gap-4 sm:hidden justify-items-center">
+            {metrics.slice(0, 4).map((m, i) => {
+              const isRed = i % 2 === 0;
 
-                  <p className="font-bold text-sm">
-                    <CountUp from={0} to={m.value} duration={1.5} />
-                    {m.suffix}
-                  </p>
+              return (
+                <div key={m.label} className="relative">
+                  {/* Outer Border */}
+                  <div className="absolute inset-0 rounded-full border-2 border-[#C91111]/40 scale-110" />
 
-                  <p className="text-[9px] text-gray-500 px-1">{m.label}</p>
+                  {/* Inner Card */}
+                  <div
+                    className={`w-28 h-28 rounded-full flex flex-col items-center justify-center text-center border-2 transition-all duration-300 relative
+    ${
+      isRed
+        ? "bg-[#C91111] text-white border-[#C91111]"
+        : "bg-white text-gray-900 border-[#C91111]"
+    }`}
+                  >
+                    <div
+                      className={`mb-1 ${
+                        isRed ? "text-white" : "text-[#C91111]"
+                      }`}
+                    >
+                      {m.icon}
+                    </div>
+
+                    <p className="font-bold text-sm">
+                      <CountUp from={0} to={m.value} duration={1.5} />
+                      {m.suffix}
+                    </p>
+
+                    <p
+                      className={`text-[9px] px-1 ${
+                        isRed ? "text-white/80" : "text-gray-500"
+                      }`}
+                    >
+                      {m.label}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          {/* Desktop Grid */}
+          {/* ✅ DESKTOP */}
           <div className="hidden sm:grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
-            {metrics.map((m) => (
-              <div key={m.label} className="relative group">
-                <div className="absolute inset-0 rounded-full border-2 border-[#C91111]/30 scale-110 group-hover:scale-125 transition duration-300" />
+            {metrics.map((m, i) => {
+              const isRed = i % 2 === 0;
 
-                <div className="w-36 h-36 rounded-full bg-white border-2 border-[#C91111] flex flex-col items-center justify-center text-center shadow-sm group-hover:shadow-xl transition duration-300">
-                  <div className="w-10 h-10 rounded-full bg-[#C91111]/10 flex items-center justify-center text-[#C91111] mb-2 group-hover:bg-[#C91111] group-hover:text-white transition">
-                    {m.icon}
+              return (
+                <div key={m.label} className="relative group">
+                  {/* Outer Border */}
+                  <div className="absolute inset-0 rounded-full border-2 border-[#C91111]/30 scale-110 group-hover:scale-125 transition duration-300" />
+
+                  {/* Inner Card */}
+                  <div
+                    className={`w-36 h-36 rounded-full flex flex-col items-center justify-center text-center border-2 shadow-sm transition duration-300 relative
+    ${
+      isRed
+        ? "bg-[#C91111] text-white border-[#C91111]"
+        : "bg-white text-gray-900 border-[#C91111]"
+    }
+    group-hover:scale-105 group-hover:shadow-xl`}
+                  >
+                    <div
+                      className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition
+      ${isRed ? "bg-white/20 text-white" : "bg-[#C91111]/10 text-[#C91111]"}`}
+                    >
+                      {m.icon}
+                    </div>
+
+                    <p className="font-extrabold text-xl leading-none">
+                      <CountUp from={0} to={m.value} duration={1.5} />
+                      {m.suffix}
+                    </p>
+
+                    <p
+                      className={`text-[10px] mt-1 px-2 ${
+                        isRed ? "text-white/80" : "text-gray-500"
+                      }`}
+                    >
+                      {m.label}
+                    </p>
                   </div>
-
-                  <p className="font-extrabold text-xl leading-none">
-                    <CountUp from={0} to={m.value} duration={1.5} />
-                    {m.suffix}
-                  </p>
-
-                  <p className="text-gray-500 text-[10px] mt-1 px-2">
-                    {m.label}
-                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

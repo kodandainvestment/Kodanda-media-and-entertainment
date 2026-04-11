@@ -6,8 +6,8 @@ import ShapeGrid from "../animations/ShapeGrid";
 /* ─── Data ───────────────────────────────────────────────────────────────── */
 const info = [
   { icon: FiMapPin, label: "Visit Us", value: "Indore, MP" },
-  { icon: FiMail,   label: "Email",    value: "info@kodandamedia.com" },
-  { icon: FiPhone,  label: "Call",     value: "+91 80850 82069" },
+  { icon: FiMail, label: "Email", value: "info@kodandamedia.com" },
+  { icon: FiPhone, label: "Call", value: "+91 80850 82069" },
 ];
 
 /* ─── Keyframes (only what Tailwind can't express) ───────────────────────── */
@@ -71,13 +71,15 @@ const STYLES = `
 
 /* ─── Cursor Glow ────────────────────────────────────────────────────────── */
 function CursorGlow() {
-  const glowRef  = useRef(null);
+  const glowRef = useRef(null);
   const trailRef = useRef(null);
-  const pos   = useRef({ x: 0, y: 0 });
+  const pos = useRef({ x: 0, y: 0 });
   const trail = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const move = (e) => { pos.current = { x: e.clientX, y: e.clientY }; };
+    const move = (e) => {
+      pos.current = { x: e.clientX, y: e.clientY };
+    };
     window.addEventListener("mousemove", move);
     let raf;
     const tick = () => {
@@ -90,7 +92,10 @@ function CursorGlow() {
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
-    return () => { window.removeEventListener("mousemove", move); cancelAnimationFrame(raf); };
+    return () => {
+      window.removeEventListener("mousemove", move);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
@@ -100,7 +105,11 @@ function CursorGlow() {
         ref={glowRef}
         aria-hidden="true"
         className="fixed top-0 left-0 w-[440px] h-[440px] rounded-full pointer-events-none z-[1]"
-        style={{ background: "radial-gradient(circle,rgba(201,17,17,0.07) 0%,transparent 70%)", willChange: "transform" }}
+        style={{
+          background:
+            "radial-gradient(circle,rgba(201,17,17,0.07) 0%,transparent 70%)",
+          willChange: "transform",
+        }}
       />
       {/* Cursor ring */}
       <div
@@ -141,20 +150,26 @@ function Reveal({ children, delay = 0, direction = "up" }) {
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVis(true); obs.disconnect(); } },
-      { threshold: 0.1 }
+      ([e]) => {
+        if (e.isIntersecting) {
+          setVis(true);
+          obs.disconnect();
+        }
+      },
+      { threshold: 0.1 },
     );
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
 
-  const hiddenClass = {
-    up:    "opacity-0 translate-y-12",
-    down:  "opacity-0 -translate-y-12",
-    left:  "opacity-0 -translate-x-12",
-    right: "opacity-0 translate-x-12",
-    scale: "opacity-0 scale-90",
-  }[direction] ?? "opacity-0 translate-y-12";
+  const hiddenClass =
+    {
+      up: "opacity-0 translate-y-12",
+      down: "opacity-0 -translate-y-12",
+      left: "opacity-0 -translate-x-12",
+      right: "opacity-0 translate-x-12",
+      scale: "opacity-0 scale-90",
+    }[direction] ?? "opacity-0 translate-y-12";
 
   return (
     <div
@@ -172,12 +187,13 @@ function Tilt({ children, strength = 16 }) {
   const ref = useRef(null);
   const move = (e) => {
     const r = ref.current.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width  - 0.5) * strength;
-    const y = ((e.clientY - r.top)  / r.height - 0.5) * strength;
+    const x = ((e.clientX - r.left) / r.width - 0.5) * strength;
+    const y = ((e.clientY - r.top) / r.height - 0.5) * strength;
     ref.current.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${-y}deg) scale3d(1.02,1.02,1.02)`;
   };
   const leave = () => {
-    ref.current.style.transform = "perspective(900px) rotateY(0) rotateX(0) scale3d(1,1,1)";
+    ref.current.style.transform =
+      "perspective(900px) rotateY(0) rotateX(0) scale3d(1,1,1)";
   };
   return (
     <div
@@ -196,11 +212,12 @@ function Tilt({ children, strength = 16 }) {
 function Float3D({ children, delayOffset = 0, amplitude = 14 }) {
   const ref = useRef(null);
   useEffect(() => {
-    let raf, t = delayOffset;
+    let raf,
+      t = delayOffset;
     const tick = () => {
       t += 0.009;
       if (ref.current) {
-        const y   = Math.sin(t) * amplitude;
+        const y = Math.sin(t) * amplitude;
         const rot = Math.sin(t * 0.6) * 8;
         ref.current.style.transform = `translateY(${y}px) rotateY(${rot}deg) rotateZ(${rot * 0.2}deg)`;
       }
@@ -210,7 +227,10 @@ function Float3D({ children, delayOffset = 0, amplitude = 14 }) {
     return () => cancelAnimationFrame(raf);
   }, [delayOffset, amplitude]);
   return (
-    <div ref={ref} style={{ transformStyle: "preserve-3d", willChange: "transform" }}>
+    <div
+      ref={ref}
+      style={{ transformStyle: "preserve-3d", willChange: "transform" }}
+    >
       {children}
     </div>
   );
@@ -220,23 +240,29 @@ function Float3D({ children, delayOffset = 0, amplitude = 14 }) {
 function Sparks() {
   const pts = useRef(
     Array.from({ length: 18 }, (_, i) => ({
-      id: i, left: Math.random() * 100,
-      delay: Math.random() * 7, dur: 5 + Math.random() * 6,
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 7,
+      dur: 5 + Math.random() * 6,
       size: 2 + Math.random() * 3,
-    }))
+    })),
   ).current;
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+    <div
+      className="absolute inset-0 overflow-hidden pointer-events-none"
+      aria-hidden="true"
+    >
       {pts.map((p) => (
         <span
           key={p.id}
           className="absolute bottom-[-10px] rounded-full bg-[#C91111] anim-sparks"
           style={{
             left: `${p.left}%`,
-            width: p.size, height: p.size,
+            width: p.size,
+            height: p.size,
             opacity: 0.12,
-            "--dur":   `${p.dur}s`,
+            "--dur": `${p.dur}s`,
             "--delay": `${p.delay}s`,
           }}
         />
@@ -252,8 +278,10 @@ function OrbitRing({ sizePx, animClass, opacity = "0.09" }) {
       aria-hidden="true"
       className={`absolute rounded-full pointer-events-none border-dashed border-[#C91111] ${animClass}`}
       style={{
-        width: sizePx, height: sizePx,
-        top: "50%", left: "50%",
+        width: sizePx,
+        height: sizePx,
+        top: "50%",
+        left: "50%",
         transform: "translate(-50%,-50%)",
         borderWidth: "1.5px",
         borderColor: `rgba(201,17,17,${opacity})`,
@@ -278,12 +306,20 @@ function InfoCard({ icon: Icon, label, value, index }) {
               : "border-gray-200 shadow-sm bg-white"
             }`}
         >
-          <div className={`w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300
-            ${hov ? "bg-[#C91111] shadow-[0_6px_20px_rgba(201,17,17,0.3)]" : "bg-[#C91111]/10"}`}>
-            <Icon className={`text-lg transition-colors duration-300 ${hov ? "text-white" : "text-[#C91111]"}`} />
+          <div
+            className={`w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300
+            ${hov ? "bg-[#C91111] shadow-[0_6px_20px_rgba(201,17,17,0.3)]" : "bg-[#C91111]/10"}`}
+          >
+            <Icon
+              className={`text-lg transition-colors duration-300 ${hov ? "text-white" : "text-[#C91111]"}`}
+            />
           </div>
-          <p className="text-gray-400 text-[10px] font-bold tracking-widest uppercase">{label}</p>
-          <p className="text-gray-900 font-bold text-[12px] leading-snug break-words">{value}</p>
+          <p className="text-gray-400 text-[10px] font-bold tracking-widest uppercase">
+            {label}
+          </p>
+          <p className="text-gray-900 font-bold text-[12px] leading-snug break-words">
+            {value}
+          </p>
           <div
             className="h-[3px] bg-[#C91111] rounded-sm transition-all duration-300"
             style={{ width: hov ? 40 : 0 }}
@@ -297,7 +333,7 @@ function InfoCard({ icon: Icon, label, value, index }) {
 /* ─── Animated Input ──────────────────────────────────────────────────────── */
 function AnimInput({ type = "text", placeholder, rows, value, onChange }) {
   const [focused, setFocused] = useState(false);
-  const [filled,  setFilled]  = useState(false);
+  const [filled, setFilled] = useState(false);
 
   const cls = [
     "w-full font-body text-sm text-gray-900 placeholder-gray-400",
@@ -311,22 +347,35 @@ function AnimInput({ type = "text", placeholder, rows, value, onChange }) {
   ].join(" ");
 
   const handlers = {
-    value, onChange, placeholder, className: cls,
-    onFocus:  () => setFocused(true),
-    onBlur:   (e) => { setFocused(false); setFilled(!!e.target.value); },
+    value,
+    onChange,
+    placeholder,
+    className: cls,
+    onFocus: () => setFocused(true),
+    onBlur: (e) => {
+      setFocused(false);
+      setFilled(!!e.target.value);
+    },
   };
 
-  return rows
-    ? <textarea {...handlers} rows={rows} />
-    : <input    {...handlers} type={type} />;
+  return rows ? (
+    <textarea {...handlers} rows={rows} />
+  ) : (
+    <input {...handlers} type={type} />
+  );
 }
 
 /* ─── Main ────────────────────────────────────────────────────────────────── */
 export default function Contact() {
   const sectionRef = useRef(null);
   const [scrollY, setScrollY] = useState(0);
-  const [form,    setForm]    = useState({ name: "", email: "", subject: "", message: "" });
-  const [sent,    setSent]    = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
 
   useEffect(() => {
@@ -335,14 +384,17 @@ export default function Contact() {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
-  const sectionTop  = sectionRef.current?.offsetTop ?? 0;
+  const sectionTop = sectionRef.current?.offsetTop ?? 0;
   const localScroll = Math.max(0, scrollY - sectionTop + 400);
   const menParallax = -localScroll * 0.06;
 
   const handleSend = () => {
     if (!form.name || !form.email) return;
     setSending(true);
-    setTimeout(() => { setSending(false); setSent(true); }, 1600);
+    setTimeout(() => {
+      setSending(false);
+      setSent(true);
+    }, 1600);
     setTimeout(() => setSent(false), 5000);
   };
 
@@ -355,16 +407,21 @@ export default function Contact() {
         ref={sectionRef}
         id="contact"
         className="font-body relative min-h-screen overflow-hidden px-6 pt-[100px] pb-20"
-        style={{ background: "linear-gradient(160deg,#ffffff 0%,#fafafa 60%,#fff5f5 100%)" }}
+        style={{
+          background:
+            "linear-gradient(160deg,#ffffff 0%,#fafafa 60%,#fff5f5 100%)",
+        }}
       >
-
         {/* ShapeGrid BG */}
         <div className="absolute inset-0 z-0">
           <ShapeGrid
-            direction="diagonal" speed={0.4}
+            direction="diagonal"
+            speed={0.4}
             borderColor="rgba(201,17,17,0.40)"
-            squareSize={60} hoverFillColor="#C91111"
-            hoverTrailAmount={4} shape="square"
+            squareSize={60}
+            hoverFillColor="#C91111"
+            hoverTrailAmount={4}
+            shape="square"
           />
           <div className="absolute inset-0 bg-white/75 pointer-events-none" />
         </div>
@@ -372,27 +429,52 @@ export default function Contact() {
         <Sparks />
 
         {/* Orbiting rings — centred on heading area */}
-        <div className="absolute top-[12%] left-1/2 w-0 h-0 z-0" aria-hidden="true">
+        <div
+          className="hidden md:block absolute top-[12%] left-1/2 w-0 h-0 z-0"
+          aria-hidden="true"
+        >
+          {" "}
           <OrbitRing sizePx={340} animClass="anim-orbit-fwd" opacity="1" />
           <OrbitRing sizePx={220} animClass="anim-orbit-rev" opacity="0.60" />
-          <OrbitRing sizePx={120} animClass="anim-orbit-sm"  opacity="0.40" />
+          <OrbitRing sizePx={120} animClass="anim-orbit-sm" opacity="0.40" />
         </div>
 
         {/* Corner blobs */}
         <div
           className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle,rgba(201,17,17,0.05) 0%,transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle,rgba(201,17,17,0.05) 0%,transparent 70%)",
+          }}
         />
         <div
           className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle,rgba(201,17,17,0.04) 0%,transparent 70%)" }}
+          style={{
+            background:
+              "radial-gradient(circle,rgba(201,17,17,0.04) 0%,transparent 70%)",
+          }}
         />
 
         {/* Grid overlay */}
-        <svg width="100%" height="100%" className="absolute inset-0 opacity-[0.022] pointer-events-none" aria-hidden="true">
+        <svg
+          width="100%"
+          height="100%"
+          className="absolute inset-0 opacity-[0.022] pointer-events-none"
+          aria-hidden="true"
+        >
           <defs>
-            <pattern id="cgrid" width="48" height="48" patternUnits="userSpaceOnUse">
-              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#C91111" strokeWidth="1" />
+            <pattern
+              id="cgrid"
+              width="48"
+              height="48"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 48 0 L 0 0 0 48"
+                fill="none"
+                stroke="#C91111"
+                strokeWidth="1"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#cgrid)" />
@@ -400,44 +482,62 @@ export default function Contact() {
 
         {/* Floating 3D icon decorations */}
         <div className="absolute left-[4%] top-[22%] opacity-[0.13] z-[1] text-[48px] text-[#C91111] pointer-events-none">
-          <Float3D delayOffset={0}   amplitude={16}><FiMail /></Float3D>
+          <Float3D delayOffset={0} amplitude={16}>
+            <FiMail />
+          </Float3D>
         </div>
         <div className="absolute right-[8%] top-[28%] opacity-[0.20] z-[1] text-[60px] text-[#C91111] pointer-events-none">
-          <Float3D delayOffset={1.5} amplitude={12}><FiPhone /></Float3D>
+          <Float3D delayOffset={1.5} amplitude={12}>
+            <FiPhone />
+          </Float3D>
         </div>
         <div className="absolute left-[8%] bottom-[25%] opacity-[0.09] z-[1] text-[52px] text-[#C91111] pointer-events-none">
-          <Float3D delayOffset={3}   amplitude={20}><FiMapPin /></Float3D>
+          <Float3D delayOffset={3} amplitude={20}>
+            <FiMapPin />
+          </Float3D>
         </div>
         <div className="absolute right-[7%] bottom-[20%] opacity-[0.08] z-[1] text-[52px] text-[#C91111] pointer-events-none">
-          <Float3D delayOffset={2}   amplitude={14}><FiSend /></Float3D>
+          <Float3D delayOffset={2} amplitude={14}>
+            <FiSend />
+          </Float3D>
         </div>
 
         {/* ══ Main content ══ */}
         <div className="relative z-[2] max-w-[1100px] mx-auto">
-
           {/* Header */}
           <Reveal direction="up">
             <div className="text-center mb-14">
-
-              <div className="inline-flex items-center gap-2 mb-4 px-5 py-[6px] rounded-full
+              <div
+                className="inline-flex items-center gap-2 mb-4 px-5 py-[6px] rounded-full
                 bg-[#C91111]/[0.07] border border-[#C91111]/20
-                text-[#C91111] text-[11px] font-bold tracking-[0.18em] uppercase">
+                text-[#C91111] text-[11px] font-bold tracking-[0.18em] uppercase"
+              >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#C91111] anim-pulse-glow" />
                 Get In Touch
               </div>
 
               <h2
                 className="font-display font-black text-gray-900 tracking-tight mb-4"
-                style={{ fontSize: "clamp(2.4rem,5.5vw,4.2rem)", lineHeight: 1.05 }}
+                style={{
+                  fontSize: "clamp(2.4rem,5.5vw,4.2rem)",
+                  lineHeight: 1.05,
+                }}
               >
                 Let's{" "}
                 <span className="text-[#C91111] relative inline-block">
                   Talk
-                  <svg viewBox="0 0 100 14" className="absolute -bottom-1.5 left-0 w-full overflow-visible">
+                  <svg
+                    viewBox="0 0 100 14"
+                    className="absolute -bottom-1.5 left-0 w-full overflow-visible"
+                  >
                     <path
                       d="M 3 10 Q 50 3 97 10"
-                      stroke="#C91111" strokeWidth="3" fill="none" strokeLinecap="round"
-                      strokeDasharray="300" strokeDashoffset="300"
+                      stroke="#C91111"
+                      strokeWidth="3"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeDasharray="300"
+                      strokeDashoffset="300"
                       className="anim-draw-line"
                     />
                   </svg>
@@ -445,14 +545,14 @@ export default function Contact() {
               </h2>
 
               <p className="text-gray-400 text-[15px] max-w-[440px] mx-auto leading-relaxed">
-                Ready to elevate your brand? We'd love to hear about your project.
+                Ready to elevate your brand? We'd love to hear about your
+                project.
               </p>
             </div>
           </Reveal>
 
           {/* Two-column grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-start">
-
             {/* ── Left: Map + Info ── */}
             <div className="flex flex-col gap-4">
               <Reveal direction="left" delay={0.1}>
@@ -462,42 +562,82 @@ export default function Contact() {
                     <iframe
                       title="Unity One Mall Indore"
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.847!2d75.8577!3d22.7196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fd0b7e3b3b3b%3A0x0!2sUnity+One+Mall%2C+Rajiv+Gandhi+Square%2C+Indore%2C+Madhya+Pradesh!5e0!3m2!1sen!2sin!4v1700000000000"
-                      width="100%" height="280"
+                      width="100%"
+                      height="280"
                       style={{ border: 0, display: "block" }}
-                      allowFullScreen loading="lazy"
+                      allowFullScreen
+                      loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                     />
                   </div>
                 </Tilt>
               </Reveal>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
-                {info.map((item, i) => <InfoCard key={item.label} {...item} index={i} />)}
+              <div className="flex justify-center items-center gap-6 md:hidden mt-2 relative z-20">
+                {info.map((item, i) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div key={i} className="relative group">
+                      {/* Icon */}
+                      <div className="w-12 h-12 rounded-full bg-[#C91111]/10 flex items-center justify-center text-[#C91111] border border-[#C91111]/20 shadow-sm">
+                        <Icon className="text-lg" />
+                      </div>
+
+                      {/* Tooltip */}
+                      <div
+                        className="
+            absolute left-1/2 -translate-x-1/2 top-14
+            bg-[#C91111] text-white text-[11px] px-3 py-1.5 rounded-md
+            whitespace-nowrap shadow-lg
+            opacity-0 scale-90 pointer-events-none
+            group-hover:opacity-100 group-hover:scale-100
+            transition-all duration-200
+            z-50
+          "
+                      >
+                        {item.value}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              {/* ✅ DESKTOP (full cards) */}
+              <div className="hidden md:grid grid-cols-3 gap-2.5">
+                {info.map((item, i) => (
+                  <InfoCard key={item.label} {...item} index={i} />
+                ))}
               </div>
             </div>
 
             {/* ── Right: Form ── */}
             <Reveal direction="right" delay={0.15}>
               <div className="relative">
-
                 {/* Parallax man */}
                 <img
                   src={menImg}
                   alt=""
                   className="hidden lg:block absolute -right-36 -bottom-12 h-[250px] w-auto object-contain z-10 pointer-events-none select-none drop-shadow-[0_12px_32px_rgba(201,17,17,0.12)]"
-                  style={{ transform: `translateY(${menParallax}px)`, transition: "transform 0.1s linear" }}
+                  style={{
+                    transform: `translateY(${menParallax}px)`,
+                    transition: "transform 0.1s linear",
+                  }}
                 />
 
                 <Tilt strength={10}>
-                  <div className="relative overflow-hidden rounded-[28px] p-8 sm:p-9
+                  <div
+                    className="relative overflow-hidden rounded-[28px] p-8 sm:p-9
                     bg-white/95 backdrop-blur-xl
                     border border-[#C91111]/[0.12]
-                    shadow-[0_20px_60px_rgba(201,17,17,0.07),0_4px_20px_rgba(0,0,0,0.05)]">
-
+                    shadow-[0_20px_60px_rgba(201,17,17,0.07),0_4px_20px_rgba(0,0,0,0.05)]"
+                  >
                     {/* Corner glow */}
                     <div
                       className="absolute -top-16 -right-16 w-48 h-48 rounded-full pointer-events-none"
-                      style={{ background: "radial-gradient(circle,rgba(201,17,17,0.07) 0%,transparent 70%)" }}
+                      style={{
+                        background:
+                          "radial-gradient(circle,rgba(201,17,17,0.07) 0%,transparent 70%)",
+                      }}
                     />
 
                     {/* Form heading */}
@@ -514,27 +654,35 @@ export default function Contact() {
                         <AnimInput
                           placeholder="Your Name"
                           value={form.name}
-                          onChange={(e) => setForm({ ...form, name: e.target.value })}
+                          onChange={(e) =>
+                            setForm({ ...form, name: e.target.value })
+                          }
                         />
                         <AnimInput
                           type="email"
                           placeholder="Email Address"
                           value={form.email}
-                          onChange={(e) => setForm({ ...form, email: e.target.value })}
+                          onChange={(e) =>
+                            setForm({ ...form, email: e.target.value })
+                          }
                         />
                       </div>
 
                       <AnimInput
                         placeholder="Subject"
                         value={form.subject}
-                        onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                        onChange={(e) =>
+                          setForm({ ...form, subject: e.target.value })
+                        }
                       />
 
                       <AnimInput
                         placeholder="Your Message"
                         rows={5}
                         value={form.message}
-                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        onChange={(e) =>
+                          setForm({ ...form, message: e.target.value })
+                        }
                       />
 
                       {/* Send button */}
@@ -557,7 +705,8 @@ export default function Contact() {
                           <span
                             className="absolute inset-0 anim-sweep"
                             style={{
-                              background: "linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.12) 50%,transparent 100%)",
+                              background:
+                                "linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.12) 50%,transparent 100%)",
                               transform: "skewX(-20deg)",
                             }}
                           />
@@ -585,7 +734,6 @@ export default function Contact() {
                 </Tilt>
               </div>
             </Reveal>
-
           </div>
         </div>
       </section>

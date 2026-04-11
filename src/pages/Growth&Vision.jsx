@@ -399,21 +399,15 @@ export default function GrowthAndVision() {
           Growth <span className="text-[#C91111]">& </span>
           <span className="text-[#C91111] relative inline-block">
             Vision
-            <svg
-              viewBox="0 0 100 14"
-              className="absolute -bottom-1.5 left-0 w-full"
-            >
-              <path
-                d="M 3 10 Q 50 3 97 10"
-                stroke="#C91111"
-                strokeWidth="3"
-                fill="none"
-                strokeLinecap="round"
-                strokeDasharray="300"
-                strokeDashoffset="300"
-                className="anim-draw-line"
-              />
-            </svg>
+           <svg viewBox="0 0 240 14" style={{
+                    position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
+                  }}>
+                    <path d="M 3 10 Q 120 3 237 10"
+                      stroke="#C91111" strokeWidth="3" fill="none"
+                      strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
+                      style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+                    />
+                  </svg>
           </span>
         </h2>
 
