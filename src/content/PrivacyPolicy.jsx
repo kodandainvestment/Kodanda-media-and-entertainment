@@ -2,6 +2,7 @@ export default function PrivacyPolicy({ onClose }) {
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4">
       <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl">
+
         {/* Header */}
         <div className="flex items-center justify-between px-8 py-5 border-b border-gray-100">
           <h2 className="text-xl font-bold text-gray-900">Privacy Policy</h2>
@@ -14,43 +15,115 @@ export default function PrivacyPolicy({ onClose }) {
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto px-8 py-6 text-sm text-gray-600 leading-relaxed space-y-5">
+        <div className="overflow-y-auto px-8 py-6 text-sm text-gray-600 leading-relaxed space-y-6">
+
           <p className="text-gray-400 text-xs">Last updated: January 2026</p>
 
+          {/* 1 */}
           <div>
-            <p className="font-semibold text-gray-800 mb-1">1. Information We Collect</p>
-            <p>We collect information you provide directly, such as your name, email address, phone number, and any messages submitted through our contact forms. We may also collect usage data automatically when you visit our website.</p>
+            <p className="font-semibold text-gray-800 mb-1">1. Introduction</p>
+            <p>
+              Kodanda Media and Entertainment Pvt. Ltd. respects your privacy and is committed to protecting your personal data.
+            </p>
           </div>
 
+          {/* 2 */}
           <div>
-            <p className="font-semibold text-gray-800 mb-1">2. How We Use Your Information</p>
-            <p>Your information is used to respond to inquiries, deliver our services, send relevant updates, and improve our website experience. We do not sell your personal data to third parties.</p>
+            <p className="font-semibold text-gray-800 mb-1">2. Information We Collect</p>
+            <p className="mb-2">We may collect the following types of information:</p>
+
+            <ul className="list-disc pl-5 space-y-1">
+              <li><span className="font-medium text-gray-700">Personal Information:</span> Name, email address, contact details</li>
+              <li><span className="font-medium text-gray-700">Non-Personal Information:</span> Browser type, IP address, device info, website usage data</li>
+            </ul>
           </div>
 
+          {/* 3 */}
           <div>
-            <p className="font-semibold text-gray-800 mb-1">3. Cookies</p>
-            <p>We use cookies to enhance your browsing experience and analyze site traffic. You may disable cookies through your browser settings, though some features may not function properly as a result.</p>
+            <p className="font-semibold text-gray-800 mb-1">3. How We Use Your Information</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Improve user experience</li>
+              <li>Respond to inquiries</li>
+              <li>Send updates (if subscribed)</li>
+              <li>Analyze website performance</li>
+            </ul>
           </div>
 
+          {/* 4 */}
           <div>
-            <p className="font-semibold text-gray-800 mb-1">4. Data Security</p>
-            <p>We implement industry-standard security measures to protect your personal information. However, no method of transmission over the internet is 100% secure.</p>
+            <p className="font-semibold text-gray-800 mb-1">4. Cookies</p>
+            <p className="mb-2">We may use cookies to:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Understand user behavior</li>
+              <li>Improve website functionality</li>
+            </ul>
+            <p className="mt-2">You can disable cookies in your browser settings.</p>
           </div>
 
+          {/* 5 */}
           <div>
-            <p className="font-semibold text-gray-800 mb-1">5. Third-Party Services</p>
-            <p>We may use third-party tools (e.g., analytics, email platforms) that have their own privacy policies. We encourage you to review those policies independently.</p>
+            <p className="font-semibold text-gray-800 mb-1">5. Data Sharing</p>
+            <p className="mb-2">We do not sell personal data. We may share data with:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Service providers (hosting, analytics)</li>
+              <li>Legal authorities if required</li>
+            </ul>
           </div>
 
+          {/* 6 */}
           <div>
-            <p className="font-semibold text-gray-800 mb-1">6. Your Rights</p>
-            <p>You have the right to access, update, or request deletion of your personal data at any time. Contact us at CEO@kodandamedia.com to exercise these rights.</p>
+            <p className="font-semibold text-gray-800 mb-1">6. Data Security</p>
+            <p>
+              We take reasonable steps to protect your data, but no system is 100% secure.
+            </p>
           </div>
 
+          {/* 7 */}
           <div>
-            <p className="font-semibold text-gray-800 mb-1">7. Contact</p>
-            <p>For any privacy-related questions, reach us at CEO@kodandamedia.com or call +91-9876543345.</p>
+            <p className="font-semibold text-gray-800 mb-1">7. Third-Party Services</p>
+            <p className="mb-2">We may use:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Google Analytics</li>
+              <li>YouTube embeds</li>
+              <li>Social media integrations</li>
+            </ul>
+            <p className="mt-2">
+              These platforms have their own privacy policies.
+            </p>
           </div>
+
+          {/* 8 */}
+          <div>
+            <p className="font-semibold text-gray-800 mb-1">8. Your Rights</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Request access to your data</li>
+              <li>Request deletion of your data</li>
+              <li>Opt out of communications</li>
+            </ul>
+          </div>
+
+          {/* 9 */}
+          <div>
+            <p className="font-semibold text-gray-800 mb-1">9. Children’s Privacy</p>
+            <p>
+              Our content is not directed at children under 13. We do not knowingly collect data from minors.
+            </p>
+          </div>
+
+          {/* 10 */}
+          <div>
+            <p className="font-semibold text-gray-800 mb-1">10. Changes to Privacy Policy</p>
+            <p>
+              We may update this policy from time to time.
+            </p>
+          </div>
+
+          {/* 11 */}
+          <div>
+            <p className="font-semibold text-gray-800 mb-1">11. Contact Information</p>
+            <p>📧 kodandamedia@gmail.com</p>
+          </div>
+
         </div>
       </div>
     </div>
