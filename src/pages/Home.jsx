@@ -34,7 +34,7 @@ export default function Dashboard() {
   return (
     <section
       ref={containerRef}
-      className="bg-white via-gray-50 to-white h-[100vh] w-full flex flex-col items-center justify-center text-center px-6 relative overflow-hidden"
+      className="bg-white via-gray-50 to-white h-[80vh] sm:h-[100vh] w-full flex flex-col items-center justify-center text-center px-6 relative overflow-hidden"
     >
       {/* Enhanced animations and keyframes */}
       <style>{`
@@ -186,16 +186,16 @@ export default function Dashboard() {
 
       {/* 3D Floating geometric shapes — hidden on mobile */}
       {/* Floating Social Media Icons */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
+      <div className="absolute inset-0 overflow-hidden hidden sm:block">
         {[
-          { Icon: FaInstagram, top: "15%", left: "8%" },
-          { Icon: FaWhatsapp, top: "50%", left: "10%" },
-          { Icon: FiTwitter, top: "20%", right: "12%" },
-          { Icon: CiFacebook, top: "50%", right: "8%" },
-          { Icon: CiYoutube, bottom: "20%", right: "15%" },
-          { Icon: AiOutlinePinterest, bottom: "25%", left: "20%" },
-          { Icon: CiLinkedin, top: "10%", left: "30%" },
-          { Icon: FaThreads, bottom: "35%", right: "25%" },
+          { Icon: FaInstagram, top: "15%", left: "8%", link: "https://www.instagram.com/kodandamedia?igsh=MWE3ODQ4d2ZjYzJjZw%3D%3D" },
+          { Icon: FaWhatsapp, top: "50%", left: "10%", link: "https://wa.me/1234567890" },
+          { Icon: FiTwitter, top: "20%", right: "12%", link: "https://twitter.com" },
+          { Icon: CiFacebook, top: "50%", right: "8%", link: "https://www.facebook.com/@kodandamedia" },
+          { Icon: CiYoutube, bottom: "20%", right: "15%", link: "https://www.youtube.com/@kodandamedia.official" },
+          { Icon: AiOutlinePinterest, bottom: "25%", left: "20%", link: "https://pinterest.com" },
+          { Icon: CiLinkedin, top: "10%", left: "30%", link: "https://www.linkedin.com/company/kodanda-media-and-entertainment-pvt-ltd/posts/?feedView=all" },
+          // { Icon: FaThreads, bottom: "35%", right: "25%", link: "https://threads.net" },
         ].map((item, i) => {
           const Icon = item.Icon;
           return (
@@ -209,8 +209,15 @@ export default function Dashboard() {
                 bottom: item.bottom,
               }}
             >
-              <Icon className="text-[#C91111] text-3xl lg:text-4xl opacity-80 drop-shadow-md" />
-            </div>
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block hover:scale-110 transition-transform duration-300"
+              >
+                <Icon className="text-[#C91111] text-3xl lg:text-4xl opacity-80 drop-shadow-md cursor-pointer" />
+              </a>            
+              </div>
           );
         })}
       </div>
@@ -349,7 +356,7 @@ export default function Dashboard() {
         {/* ── Bottom-center arc decoration ── */}
         <svg
           width="320"
-          height="90"
+          height="100"
           viewBox="0 0 320 80"
           className="
   hidden

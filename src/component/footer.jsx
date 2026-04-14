@@ -13,25 +13,31 @@ import TermsCondition from "../content/Terms&Condition";
 import { FaThreads } from "react-icons/fa6";
 
 const services = [
-  "Unfiltered Success",
-  "Bollywood Inside",
-  "sarcastic_samachar"
+  {
+    name: "Unfiltered Success",
+    link: "https://www.instagram.com/unfilteredsuccess_?igsh=MWJhOHJ2eWw0ZGFjeA==",
+  },
+  {
+    name: "Bollywood Inside",
+    link: "https://www.youtube.com/@bollywoodinside",
+  },
+  {
+    name: "sarcastic_samachar",
+    link: "https://www.instagram.com/sarcastic.samachar?igsh=MWg4OW1meWZwcWR5Yg==",
+  },
 ];
 
 const company = [
   { label: "Home", id: "home" },
   { label: "About Us", id: "about" },
   { label: "Channels", id: "chennals" },
-  // { label: "Viral Contact", id: "viral-content" },
   { label: "Case Studies", id: "case-studies" },
-  // { label: "Growth & Vision", id: "growth-vision" },
-  // { label: "FAQ", id: "faq" },
   { label: "Contact Us", id: "contact" },
 ];
 
 const socials = [
   { icon: <FaInstagram />, href: "https://www.instagram.com/kodandamedia?igsh=MWE3ODQ4d2ZjYzJjZw==", label: "Instagram" },
-  { icon: <FaThreads />, href: "https://www.threads.com/@kodandamedia?hl=en", label: "Threads" },
+  // { icon: <FaThreads />, href: "https://www.threads.com/@kodandamedia?hl=en", label: "Threads" },
   { icon: <FaLinkedinIn />, href: "https://www.linkedin.com/company/kodanda-media-and-entertainment-pvt-ltd/posts/?feedView=all", label: "LinkedIn" },
   { icon: <FaFacebookF />, href: "https://www.facebook.com/kodandamedia/", label: "Facebook" },
   { icon: <FaYoutube />, href: "https://www.youtube.com/@kodandamedia.official", label: "YouTube" },
@@ -70,7 +76,7 @@ export default function Footer() {
                 </li>
                 <li className="flex items-center gap-2">
                   <FiPhone className="text-[#C91111] shrink-0" />
-                  <span>+91 91 8085082069</span>
+                  <span>+91 80850 82069</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <FiMapPin className="text-[#C91111] shrink-0" />
@@ -86,13 +92,15 @@ export default function Footer() {
               </p>
               <ul className="space-y-2 text-sm">
                 {services.map((s) => (
-                  <li key={s}>
-                    <button
-                      onClick={() => scrollTo("services")}
+                  <li key={s.name}>
+                    <a
+                      href={s.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="hover:text-[#C91111] transition-colors text-left"
                     >
-                      {s}
-                    </button>
+                      {s.name}
+                    </a>
                   </li>
                 ))}
               </ul>

@@ -64,24 +64,24 @@ const videos = [
 ];
 
 const metrics = [
-  { icon: <FiEye />, value: 50, suffix: "M+", label: "Total Views Generated" },
+  { icon: <FiEye />, value: 50, suffix: "M+", label: "Views Generated" },
   {
     icon: <FiBarChart2 />,
     value: 68,
     suffix: "%",
-    label: "Average Retention Rate",
+    label: "Average Retention",
   },
   {
     icon: <FiVideo />,
     value: 120,
     suffix: "+",
-    label: "Monthly Content Output",
+    label: "Monthly Content",
   },
   {
     icon: <FiTrendingUp />,
     value: 40,
     suffix: "%",
-    label: "Audience Growth Rate",
+    label: "Audience Growth",
   },
   { icon: <FiUsers />, value: 85, suffix: "%", label: "Engagement Rate" },
 ];
@@ -90,7 +90,7 @@ export default function CaseStudies() {
   return (
     <section className="relative bg-white py-16 px-6 overflow-hidden">
       {/* 🔴 Background Particles */}
-      <div className="absolute inset-0 z-[1]">
+      {/* <div className="absolute inset-0 z-[1]">
         <Particles
           particleColors={["#ff0000"]}
           particleCount={200}
@@ -102,7 +102,7 @@ export default function CaseStudies() {
           disableRotation={false}
           pixelRatio={1}
         />
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -146,7 +146,7 @@ export default function CaseStudies() {
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-3">
             <span className="w-1 h-7 rounded-full bg-[#C91111]" />
-            <h3 className="text-2xl font-bold text-gray-900">
+            <h3 className="font-serif text-2xl font-bold text-gray-900">
               Channel Growth Highlights
             </h3>
           </div>
@@ -208,7 +208,7 @@ export default function CaseStudies() {
 
         {/* Viral Content */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">
+          <h3 className="font-serif text-2xl font-bold text-gray-900 mb-6">
             Viral Content Examples
           </h3>
 
@@ -271,14 +271,14 @@ export default function CaseStudies() {
 
         {/* Metrics */}
         <div>
-          <h3 className="text-2xl font-bold text-gray-900 mb-6">
+          <h3 className="font-serif text-2xl font-bold text-gray-900 mb-6">
             Performance Metrics
           </h3>
 
           {/* ✅ MOBILE */}
           <div className="grid grid-cols-2 gap-4 sm:hidden justify-items-center">
             {metrics.slice(0, 4).map((m, i) => {
-              const isRed = i % 2 === 0;
+              const isRed = i % 2 !== 0;
 
               return (
                 <div key={m.label} className="relative">
@@ -323,7 +323,7 @@ export default function CaseStudies() {
           {/* ✅ DESKTOP */}
           <div className="hidden sm:grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 justify-items-center">
             {metrics.map((m, i) => {
-              const isRed = i % 2 === 0;
+              const isRed = i % 2 !== 0;
 
               return (
                 <div key={m.label} className="relative group">

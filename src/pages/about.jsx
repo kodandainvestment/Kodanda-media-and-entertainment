@@ -117,8 +117,8 @@ const BG_ITEMS = [
   },
   {
     Icon: FiSearch,
-    top: "12%",
-    left: "48%",
+    top: "20%",
+    left: "46%",
     size: 28,
     dur: 24,
     delay: 5,
@@ -126,8 +126,8 @@ const BG_ITEMS = [
   },
   {
     Icon: FiAward,
-    top: "35%",
-    left: "50%",
+    top: "32%",
+    left: "53%",
     size: 30,
     dur: 21,
     delay: 6,
@@ -489,7 +489,7 @@ function PageDecorations() {
       <svg
         width="100%"
         height="100%"
-        style={{ position: "absolute", inset: 0, opacity: 0.025 }}
+        style={{ position: "absolute", inset: 0, opacity: 0.1 }}
       >
         <defs>
           <pattern
@@ -510,7 +510,7 @@ function PageDecorations() {
       </svg>
 
       {/* Bottom arc */}
-      <svg
+      {/* <svg
         width="400"
         height="80"
         viewBox="0 0 400 60"
@@ -538,7 +538,7 @@ function PageDecorations() {
           strokeDasharray="5 8"
           strokeLinecap="round"
         />
-      </svg>
+      </svg> */}
     </div>
   );
 }
@@ -979,7 +979,7 @@ export default function About() {
 
         <div>
           <div className="text-center mb-10">
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+            <h3 className="font-serif text-3xl sm:text-4xl font-extrabold text-gray-900">
               Mission<span className="text-[#C91111]"> & </span>Vision
             </h3>
           </div>
@@ -1008,7 +1008,9 @@ export default function About() {
 
         {/* Icon Strip - full bleed */}
       </div>
-      <IconStrip />
+      <div className="mt-10 sm:mt-16">
+        <IconStrip />
+      </div>
     </section>
   );
 }

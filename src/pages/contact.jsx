@@ -429,7 +429,7 @@ export default function Contact() {
         <Sparks />
 
         {/* Orbiting rings — centred on heading area */}
-        <div
+        {/* <div
           className="hidden md:block absolute top-[12%] left-1/2 w-0 h-0 z-0"
           aria-hidden="true"
         >
@@ -437,7 +437,7 @@ export default function Contact() {
           <OrbitRing sizePx={340} animClass="anim-orbit-fwd" opacity="1" />
           <OrbitRing sizePx={220} animClass="anim-orbit-rev" opacity="0.60" />
           <OrbitRing sizePx={120} animClass="anim-orbit-sm" opacity="0.40" />
-        </div>
+        </div> */}
 
         {/* Corner blobs */}
         <div
@@ -506,7 +506,7 @@ export default function Contact() {
         <div className="relative z-[2] max-w-[1100px] mx-auto">
           {/* Header */}
           <Reveal direction="up">
-            <div className="text-center mb-14">
+            <div className="text-center mb-10 -mt-8">
               <div
                 className="inline-flex items-center gap-2 mb-4 px-5 py-[6px] rounded-full
                 bg-[#C91111]/[0.07] border border-[#C91111]/20
@@ -544,7 +544,7 @@ export default function Contact() {
                 </span>
               </h2>
 
-              <p className="text-gray-400 text-[15px] max-w-[440px] mx-auto leading-relaxed">
+              <p className="text-gray-700 text-[15px] max-w-[440px] mx-auto leading-relaxed">
                 Ready to elevate your brand? We'd love to hear about your
                 project.
               </p>

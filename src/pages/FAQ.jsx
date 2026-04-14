@@ -96,38 +96,38 @@ function CursorGlow() {
 }
 
 /* ─── 3D Floating Question Mark ───────────────────────────────────────────── */
-function FloatingQMark({ x, y, size, delay, rotateDir }) {
-  const ref = useRef(null);
-  useEffect(() => {
-    let raf;
-    let t = delay;
-    const tick = () => {
-      t += 0.008;
-      if (ref.current) {
-        const yOff = Math.sin(t) * 18;
-        const rot  = Math.sin(t * 0.7) * (rotateDir === 1 ? 12 : -12);
-        ref.current.style.transform = `translateY(${yOff}px) rotateY(${rot}deg) rotateZ(${rot * 0.3}deg)`;
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [delay, rotateDir]);
+// function FloatingQMark({ x, y, size, delay, rotateDir }) {
+//   const ref = useRef(null);
+//   useEffect(() => {
+//     let raf;
+//     let t = delay;
+//     const tick = () => {
+//       t += 0.008;
+//       if (ref.current) {
+//         const yOff = Math.sin(t) * 18;
+//         const rot  = Math.sin(t * 0.7) * (rotateDir === 1 ? 12 : -12);
+//         ref.current.style.transform = `translateY(${yOff}px) rotateY(${rot}deg) rotateZ(${rot * 0.3}deg)`;
+//       }
+//       raf = requestAnimationFrame(tick);
+//     };
+//     raf = requestAnimationFrame(tick);
+//     return () => cancelAnimationFrame(raf);
+//   }, [delay, rotateDir]);
 
-  return (
-    <div ref={ref} style={{
-      position: "absolute", left: x, top: y,
-      fontSize: size, fontWeight: 900, lineHeight: 1,
-      color: "transparent",
-      WebkitTextStroke: "2px rgba(201,17,17,0.3)",
-      fontFamily: "'Georgia', serif",
-      pointerEvents: "none", userSelect: "none",
-      transformStyle: "preserve-3d",
-      willChange: "transform",
-      filter: "drop-shadow(0 8px 24px rgba(201,17,17,0.2))",
-    }} aria-hidden="true">?</div>
-  );
-}
+//   return (
+//     <div ref={ref} style={{
+//       position: "absolute", left: x, top: y,
+//       fontSize: size, fontWeight: 900, lineHeight: 1,
+//       color: "transparent",
+//       WebkitTextStroke: "2px rgba(201,17,17,0.3)",
+//       fontFamily: "'Georgia', serif",
+//       pointerEvents: "none", userSelect: "none",
+//       transformStyle: "preserve-3d",
+//       willChange: "transform",
+//       filter: "drop-shadow(0 8px 24px rgba(201,17,17,0.2))",
+//     }} aria-hidden="true">?</div>
+//   );
+// }
 
 /* ─── 3D Parallax Orb ────────────────────────────────────────────────────── */
 function ParallaxOrb({ scrollY, baseX, baseY, size, speed, color }) {
@@ -191,8 +191,8 @@ function TiltCard({ children }) {
   const ref = useRef(null);
   const onMove = (e) => {
     const r = ref.current.getBoundingClientRect();
-    const x = ((e.clientX - r.left) / r.width  - 0.5) * 20;
-    const y = ((e.clientY - r.top)  / r.height - 0.5) * 20;
+    const x = ((e.clientX - r.left) / r.width - 0.5) * 20;
+    const y = ((e.clientY - r.top) / r.height - 0.5) * 20;
     ref.current.style.transform = `perspective(800px) rotateY(${x}deg) rotateX(${-y}deg) scale3d(1.02,1.02,1.02)`;
   };
   const onLeave = () => { ref.current.style.transform = "perspective(800px) rotateY(0) rotateX(0) scale3d(1,1,1)"; };
@@ -223,65 +223,65 @@ function FAQItem({ faq, isOpen, onToggle, index }) {
       transition: "border 0.35s ease, box-shadow 0.35s ease, background 0.35s ease",
       overflow: "hidden",
     }}>
-        <button
-          onClick={onToggle}
-          style={{
-            width: "100%", display: "flex", alignItems: "center",
-            justifyContent: "space-between", padding: "20px 24px",
-            textAlign: "left", gap: 16, background: "none", border: "none", cursor: "pointer",
-          }}
-        >
+      <button
+        onClick={onToggle}
+        style={{
+          width: "100%", display: "flex", alignItems: "center",
+          justifyContent: "space-between", padding: "20px 24px",
+          textAlign: "left", gap: 16, background: "none", border: "none", cursor: "pointer",
+        }}
+      >
+        <span style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontWeight: 700, fontSize: 15,
+          color: isOpen ? "#111" : "#374151",
+          transition: "color 0.2s",
+          lineHeight: 1.4,
+        }}>
+          {/* Number badge */}
           <span style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 700, fontSize: 15,
-            color: isOpen ? "#111" : "#374151",
-            transition: "color 0.2s",
-            lineHeight: 1.4,
-          }}>
-            {/* Number badge */}
-            <span style={{
-              display: "inline-flex", alignItems: "center", justifyContent: "center",
-              width: 22, height: 22, borderRadius: "50%",
-              background: isOpen ? "#C91111" : "rgba(201,17,17,0.1)",
-              color: isOpen ? "#fff" : "#C91111",
-              fontSize: 10, fontWeight: 800, marginRight: 10,
-              transition: "all 0.3s", flexShrink: 0,
-              verticalAlign: "middle",
-            }}>{String(index + 1).padStart(2, "0")}</span>
-            {faq.q}
-          </span>
-          <span style={{
-            flexShrink: 0, width: 34, height: 34, borderRadius: "50%",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            background: isOpen ? "#C91111" : "rgba(201,17,17,0.08)",
+            display: "inline-flex", alignItems: "center", justifyContent: "center",
+            width: 22, height: 22, borderRadius: "50%",
+            background: isOpen ? "#C91111" : "rgba(201,17,17,0.1)",
             color: isOpen ? "#fff" : "#C91111",
-            transition: "all 0.35s cubic-bezier(.34,1.56,.64,1)",
-            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-            boxShadow: isOpen ? "0 4px 16px rgba(201,17,17,0.3)" : "none",
-          }}>
-            {isOpen ? <FiMinus size={13} /> : <FiPlus size={13} />}
-          </span>
-        </button>
+            fontSize: 10, fontWeight: 800, marginRight: 10,
+            transition: "all 0.3s", flexShrink: 0,
+            verticalAlign: "middle",
+          }}>{String(index + 1).padStart(2, "0")}</span>
+          {faq.q}
+        </span>
+        <span style={{
+          flexShrink: 0, width: 34, height: 34, borderRadius: "50%",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          background: isOpen ? "#C91111" : "rgba(201,17,17,0.08)",
+          color: isOpen ? "#fff" : "#C91111",
+          transition: "all 0.35s cubic-bezier(.34,1.56,.64,1)",
+          transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+          boxShadow: isOpen ? "0 4px 16px rgba(201,17,17,0.3)" : "none",
+        }}>
+          {isOpen ? <FiMinus size={13} /> : <FiPlus size={13} />}
+        </span>
+      </button>
 
-        <div style={{ height, overflow: "hidden", transition: "height 0.38s cubic-bezier(.4,0,.2,1)" }}>
-          <div ref={bodyRef} style={{
-            padding: "0 24px 20px 24px",
-            borderTop: "1px solid rgba(201,17,17,0.08)",
-            paddingTop: 16,
-          }}>
-            <div style={{
-              width: isOpen ? "48px" : "0px",
-              height: 3, background: "#C91111",
-              borderRadius: 2, marginBottom: 10,
-              transition: "width 0.4s 0.1s ease",
-            }} />
-            <p style={{
-              fontFamily: "'DM Sans', sans-serif",
-              color: "#6b7280", fontSize: 14, lineHeight: 1.75,
-            }}>{faq.a}</p>
-          </div>
+      <div style={{ height, overflow: "hidden", transition: "height 0.38s cubic-bezier(.4,0,.2,1)" }}>
+        <div ref={bodyRef} style={{
+          padding: "0 24px 20px 24px",
+          borderTop: "1px solid rgba(201,17,17,0.08)",
+          paddingTop: 16,
+        }}>
+          <div style={{
+            width: isOpen ? "48px" : "0px",
+            height: 3, background: "#C91111",
+            borderRadius: 2, marginBottom: 10,
+            transition: "width 0.4s 0.1s ease",
+          }} />
+          <p style={{
+            fontFamily: "'DM Sans', sans-serif",
+            color: "#6b7280", fontSize: 14, lineHeight: 1.75,
+          }}>{faq.a}</p>
         </div>
       </div>
+    </div>
   );
 }
 
@@ -314,7 +314,7 @@ function HelixDecor({ scrollY }) {
 export default function FAQ() {
   const [openSet, setOpenSet] = useState(() => new Set());
   const toggle = (i) => setOpenSet(s => { const n = new Set(s); n.has(i) ? n.delete(i) : n.add(i); return n; });
-  const [scrollY, setScrollY]     = useState(0);
+  const [scrollY, setScrollY] = useState(0);
   const [maxScroll, setMaxScroll] = useState(1);
   const sectionRef = useRef(null);
 
@@ -375,23 +375,23 @@ export default function FAQ() {
       >
 
         {/* ── Background: giant ghosted question marks ── */}
-        <FloatingQMark x="2%"   y="5%"   size="clamp(60px,12vw,160px)" delay={0}   rotateDir={1}  />
-        <FloatingQMark x="75%"  y="12%"  size="clamp(70px,14vw,200px)" delay={2}   rotateDir={-1} />
-        <FloatingQMark x="55%"  y="60%"  size="clamp(50px,9vw,120px)"  delay={1.2} rotateDir={1}  />
-        <FloatingQMark x="-2%"  y="70%"  size="clamp(55px,10vw,140px)" delay={3}   rotateDir={-1} />
-        <FloatingQMark x="82%"  y="75%"  size="clamp(40px,8vw,100px)"  delay={0.8} rotateDir={1}  />
+        {/* <FloatingQMark x="4%"   y="5%"   size="clamp(60px,12vw,160px)" delay={0}   rotateDir={1}  />
+        <FloatingQMark x="78%"  y="20%"  size="clamp(70px,14vw,200px)" delay={2}   rotateDir={-1} /> */}
+        {/* <FloatingQMark x="55%"  y="60%"  size="clamp(50px,9vw,120px)"  delay={1.2} rotateDir={1}  /> */}
+        {/* <FloatingQMark x="16%"  y="70%"  size="clamp(55px,10vw,140px)" delay={3}   rotateDir={-1} />
+        <FloatingQMark x="82%"  y="75%"  size="clamp(40px,8vw,100px)"  delay={0.8} rotateDir={1}  /> */}
 
         {/* ── Parallax orbs ── */}
-        <ParallaxOrb scrollY={localScroll} baseX="10%"  baseY="20%"  size={300} speed={0.12} color="radial-gradient(circle, rgba(201,17,17,0.18) 0%, transparent 70%)" />
+        {/* <ParallaxOrb scrollY={localScroll} baseX="10%"  baseY="20%"  size={300} speed={0.12} color="radial-gradient(circle, rgba(201,17,17,0.18) 0%, transparent 70%)" />
         <ParallaxOrb scrollY={localScroll} baseX="75%"  baseY="40%"  size={200} speed={0.08} color="radial-gradient(circle, rgba(201,17,17,0.15) 0%, transparent 70%)" />
-        <ParallaxOrb scrollY={localScroll} baseX="40%"  baseY="80%"  size={250} speed={0.15} color="radial-gradient(circle, rgba(201,17,17,0.16) 0%, transparent 70%)" />
+        <ParallaxOrb scrollY={localScroll} baseX="40%"  baseY="80%"  size={250} speed={0.15} color="radial-gradient(circle, rgba(201,17,17,0.16) 0%, transparent 70%)" /> */}
 
         {/* ── DNA helix on the side — desktop only ── */}
-        <div className="hidden md:block"><HelixDecor scrollY={localScroll} /></div>
+        {/* <div className="hidden md:block"><HelixDecor scrollY={localScroll} /></div> */}
 
         {/* ── Rotating ring decoration ── */}
         <div className="hidden sm:block" style={{
-          position: "absolute", right: -80, top: "15%",
+          position: "absolute", right: -80, top: "0%",
           width: 280, height: 280, pointerEvents: "none",
         }} aria-hidden="true">
           <svg width="280" height="280" viewBox="0 0 280 280" style={{ position: "absolute", inset: 0, animation: "spin-slow 25s linear infinite", transformOrigin: "center" }}>
@@ -406,7 +406,7 @@ export default function FAQ() {
 
         {/* ── Left-side rings ── */}
         <div className="hidden sm:block" style={{
-          position: "absolute", left: 10, bottom: "15%",
+          position: "absolute", left: "-4%", bottom: "0%",
           width: 200, height: 200, pointerEvents: "none",
         }} aria-hidden="true">
           <svg width="200" height="200" viewBox="0 0 200 200" style={{ position: "absolute", inset: 0, animation: "spin-rev 20s linear infinite", transformOrigin: "center" }}>
@@ -419,7 +419,7 @@ export default function FAQ() {
 
         {/* ── Left helix mirror — desktop only ── */}
         <svg width="60" height="260" viewBox="0 0 60 260" className="hidden md:block"
-          style={{ position: "absolute", left: 16, top: "35%", opacity: 0.45, pointerEvents: "none" }}
+          style={{ position: "absolute", left: "10%", top: "35%", opacity: 0.45, pointerEvents: "none" }}
           aria-hidden="true">
           {Array.from({ length: 9 }, (_, i) => {
             const y = i * 28 + 10;
@@ -444,19 +444,19 @@ export default function FAQ() {
         </svg> */}
 
         {/* ── Mid-left floating dots cluster — desktop only ── */}
-        <svg width="80" height="80" viewBox="0 0 80 80" className="hidden sm:block"
-          style={{ position: "absolute", left: "5%", top: "55%", opacity: 0.4, pointerEvents: "none" }}
+        {/* <svg width="80" height="80" viewBox="0 0 80 80" className="hidden sm:block"
+          style={{ position: "absolute", left: "5%", top: "40%", opacity: 0.4, pointerEvents: "none" }}
           aria-hidden="true">
           {[0,1,2,3,4,5,6,7,8].map(i => (
             <circle key={i} cx={(i % 3) * 28 + 12} cy={Math.floor(i / 3) * 28 + 12} r="3.5" fill="#C91111" />
           ))}
-        </svg>
+        </svg> */}
 
         {/* ── Mid-right floating dots cluster — desktop only ── */}
         <svg width="80" height="80" viewBox="0 0 80 80" className="hidden sm:block"
           style={{ position: "absolute", right: "6%", top: "50%", opacity: 0.4, pointerEvents: "none" }}
           aria-hidden="true">
-          {[0,1,2,3,4,5,6,7,8].map(i => (
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => (
             <circle key={i} cx={(i % 3) * 28 + 12} cy={Math.floor(i / 3) * 28 + 12} r="3" fill="#C91111" />
           ))}
         </svg>
@@ -549,21 +549,33 @@ export default function FAQ() {
           </Reveal>
 
           {/* ── FAQ List ── */}
+
+          const visibleFaqs = faqs.slice(0, 4);
+const hiddenFaqs = faqs.slice(4);
           <div style={{ maxWidth: 720, margin: "0 auto", width: "100%" }}>
-            <AnimatedList
-              items={faqs}
-              showGradients={false}
-              enableArrowNavigation={false}
-              displayScrollbar={false}
-              renderItem={(faq, index) => (
-                <FAQItem
-                  faq={faq}
-                  index={index}
-                  isOpen={openSet.has(index)}
-                  onToggle={() => toggle(index)}
-                />
-              )}
-            />
+            <div
+              style={{
+                maxHeight: "clamp(200px, 60vh, 350px)",
+                overflowY: "auto",
+                paddingRight: "6px",
+
+                /* Hide scrollbar */
+                scrollbarWidth: "none",        // Firefox
+                msOverflowStyle: "none",       // IE/Edge
+              }}
+              className="hide-scrollbar"
+            >
+              {faqs.map((faq, index) => (
+                <div key={index} style={{ marginBottom: 12 }}>
+                  <FAQItem
+                    faq={faq}
+                    index={index}
+                    isOpen={openSet.has(index)}
+                    onToggle={() => toggle(index)}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

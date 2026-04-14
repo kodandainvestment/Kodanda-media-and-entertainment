@@ -84,7 +84,7 @@
 //           ringGap={1.5}
 //           fadeIn={0.7}
 //           fadeOut={0.5}
-    
+
 //     // baseRadius={0.34}
 //     // radiusStep={0.1}
 //     // scaleRate={0.1}
@@ -371,73 +371,171 @@
 //     </section>
 //   );
 // }
+
+// export default function GrowthAndVision() {
+//   return (
+//     <section className="py-24 px-6 text-center overflow-hidden bg-black">
+
+//       {/* 🔴 Soft background glow */}
+//       {/* <div className="absolute inset-0 z-0">
+//         <div className="absolute w-[600px] h-[600px] bg-[#C91111]/10 blur-[140px] rounded-full top-[20%] left-1/2 -translate-x-1/2"></div>
+//       </div> */}
+
+//       {/* 🔥 SINGLE BLOCK */}
+//       {/* <div className="relative z-10 max-w-4xl mx-auto text-center bg-[#0a0a0a]/80 backdrop-blur-md border border-[#C91111]/20 rounded-3xl px-10 py-16 shadow-[0_0_60px_rgba(201,17,17,0.08)]"> */}
+
+//         {/* TOP LABEL */}
+//         <p className="text-[#C91111] text-sm tracking-widest uppercase mb-4 font-semibold">
+//           The Planning
+//         </p>
+
+//         {/* HEADING */}
+//         <h2
+//           className="font-display font-black text-white tracking-tight mb-6"
+//           style={{
+//             fontSize: "clamp(2.4rem,5.5vw,4rem)",
+//             lineHeight: 1.1,
+//           }}
+//         >
+//           Growth <span className="text-[#C91111]">& </span>
+//           <span className="text-[#C91111] relative inline-block">
+//             Vision
+//            <svg viewBox="0 0 240 14" style={{
+//                     position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
+//                   }}>
+//                     <path d="M 3 10 Q 120 3 237 10"
+//                       stroke="#C91111" strokeWidth="3" fill="none"
+//                       strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
+//                       style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+//                     />
+//                   </svg>
+//           </span>
+//         </h2>
+
+//         {/* SUBTEXT */}
+//         <p className="text-gray-400 text-base max-w-2xl mx-auto mb-10 leading-relaxed">
+//           Our focus is on continuous expansion, innovation, and long-term impact.
+//         </p>
+
+//         {/* BOTTOM CONTENT */}
+//         <p className="text-gray-400 text-sm max-w-xl mx-auto mb-6 leading-relaxed">
+//           Building a Digital Media Powerhouse
+//         </p>
+
+//         <p className="text-gray-400 text-sm max-w-xl mx-auto mb-6 leading-relaxed">
+//           Our long-term vision is to establish Kodanda Media as one of India’s
+//           leading multi-channel digital media networks.
+//         </p>
+
+//         <p className="text-gray-400 text-sm max-w-xl mx-auto mb-6 leading-relaxed">
+//           By focusing on scalability, consistency, and innovation, we are
+//           building a platform that goes beyond content.
+//         </p>
+
+//         {/* DIVIDER */}
+//         <div className="w-16 h-[2px] bg-[#C91111] mx-auto mb-10 opacity-70"></div>
+
+//         <p className="text-[#C91111] text-md italic">
+//           “From content creation to content leadership.”
+//         </p>
+//       {/* </div> */}
+//     </section>
+//   );
+// }
+
 export default function GrowthAndVision() {
+  const bars = [
+    { label: "Content Creation", value: 80 },
+    { label: "Audience Growth", value: 65 },
+    { label: "Brand Expansion", value: 70 },
+    { label: "Monetization", value: 55 },
+    { label: "Innovation", value: 75 },
+    { label: "Scaling Network", value: 60 },
+    { label: "Future Vision", value: 85 },
+  ];
+
   return (
     <section className="py-24 px-6 text-center overflow-hidden bg-black">
 
-      {/* 🔴 Soft background glow */}
-      {/* <div className="absolute inset-0 z-0">
-        <div className="absolute w-[600px] h-[600px] bg-[#C91111]/10 blur-[140px] rounded-full top-[20%] left-1/2 -translate-x-1/2"></div>
-      </div> */}
+      {/* TOP LABEL */}
+      <p className="text-[#C91111] text-sm tracking-widest uppercase mb-4 font-semibold">
+        The Planning
+      </p>
 
-      {/* 🔥 SINGLE BLOCK */}
-      {/* <div className="relative z-10 max-w-4xl mx-auto text-center bg-[#0a0a0a]/80 backdrop-blur-md border border-[#C91111]/20 rounded-3xl px-10 py-16 shadow-[0_0_60px_rgba(201,17,17,0.08)]"> */}
+      {/* HEADING */}
+      <h2
+        className="font-display font-black text-white tracking-tight mb-6"
+        style={{
+          fontSize: "clamp(2.4rem,5.5vw,4rem)",
+          lineHeight: 1.1,
+        }}
+      >
+        Growth <span className="text-[#C91111]">& </span>
+        <span className="text-[#C91111] relative inline-block">
+          Vision
+          <svg
+            viewBox="0 0 240 14"
+            style={{
+              position: "absolute",
+              bottom: -6,
+              left: 0,
+              width: "100%",
+            }}
+          >
+            <path
+              d="M 3 10 Q 120 3 237 10"
+              stroke="#C91111"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+              strokeDasharray="300"
+              strokeDashoffset="300"
+              style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+            />
+          </svg>
+        </span>
+      </h2>
 
-        {/* TOP LABEL */}
-        <p className="text-[#C91111] text-sm tracking-widest uppercase mb-4 font-semibold">
-          The Planning
-        </p>
+      {/* SUBTEXT */}
+      <p className="text-gray-400 text-base max-w-2xl mx-auto mb-0 leading-relaxed">
+        Our focus is on continuous expansion, innovation, and long-term impact.
+      </p>
 
-        {/* HEADING */}
-        <h2
-          className="font-display font-black text-white tracking-tight mb-6"
-          style={{
-            fontSize: "clamp(2.4rem,5.5vw,4rem)",
-            lineHeight: 1.1,
-          }}
-        >
-          Growth <span className="text-[#C91111]">& </span>
-          <span className="text-[#C91111] relative inline-block">
-            Vision
-           <svg viewBox="0 0 240 14" style={{
-                    position: "absolute", bottom: -6, left: 0, width: "100%", overflow: "visible"
-                  }}>
-                    <path d="M 3 10 Q 120 3 237 10"
-                      stroke="#C91111" strokeWidth="3" fill="none"
-                      strokeLinecap="round" strokeDasharray="300" strokeDashoffset="300"
-                      style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
-                    />
-                  </svg>
-          </span>
-        </h2>
+      {/* 🔥 GRAPH SECTION */}
+      <div className="max-w-5xl mx-auto">
 
-        {/* SUBTEXT */}
-        <p className="text-gray-400 text-base max-w-2xl mx-auto mb-10 leading-relaxed">
-          Our focus is on continuous expansion, innovation, and long-term impact.
-        </p>
+        {/* MOBILE SCROLL WRAPPER */}
+        <div className="overflow-x-auto md:overflow-visible">
+          
+          {/* GRAPH */}
+          <div className="flex items-end justify-center gap-8 h-[300px] min-w-[700px] md:min-w-0">
 
-        {/* BOTTOM CONTENT */}
-        <p className="text-gray-400 text-sm max-w-xl mx-auto mb-6 leading-relaxed">
-          Building a Digital Media Powerhouse
-        </p>
+            {bars.map((bar, index) => (
+              <div key={index} className="flex flex-col items-center">
 
-        <p className="text-gray-400 text-sm max-w-xl mx-auto mb-6 leading-relaxed">
-          Our long-term vision is to establish Kodanda Media as one of India’s
-          leading multi-channel digital media networks.
-        </p>
+                <div
+                  className="relative w-[80px] rounded-xl bg-gradient-to-t from-[#C91111] to-[#ff4d4d] flex items-center justify-center overflow-hidden transition-all duration-500 hover:scale-105"
+                  style={{ height: `${bar.value * 3}px` }}
+                >
+                  <span className="rotate-[-90deg] text-white text-[11px] leading-none text-center px-1 break-words">
+                    {bar.label}
+                  </span>
+                </div>
 
-        <p className="text-gray-400 text-sm max-w-xl mx-auto mb-6 leading-relaxed">
-          By focusing on scalability, consistency, and innovation, we are
-          building a platform that goes beyond content.
-        </p>
+              </div>
+            ))}
 
-        {/* DIVIDER */}
-        <div className="w-16 h-[2px] bg-[#C91111] mx-auto mb-10 opacity-70"></div>
+          </div>
+        </div>
+      </div>
 
-        <p className="text-[#C91111] text-md italic">
-          “From content creation to content leadership.”
-        </p>
-      {/* </div> */}
+      {/* DIVIDER */}
+      <div className="w-32 h-[2px] bg-[#C91111] mx-auto my-8 opacity-70"></div>
+
+      {/* TAGLINE */}
+      <p className="text-[#C91111] text-md italic">
+        “From content creation to content leadership.”
+      </p>
     </section>
   );
 }
