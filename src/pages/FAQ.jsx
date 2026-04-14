@@ -549,9 +549,6 @@ export default function FAQ() {
           </Reveal>
 
           {/* ── FAQ List ── */}
-
-          const visibleFaqs = faqs.slice(0, 4);
-const hiddenFaqs = faqs.slice(4);
           <div style={{ maxWidth: 720, margin: "0 auto", width: "100%" }}>
             <div
               style={{
