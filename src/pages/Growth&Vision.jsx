@@ -506,10 +506,9 @@ export default function GrowthAndVision() {
 
         {/* MOBILE SCROLL WRAPPER */}
         <div className="overflow-x-auto md:overflow-visible">
-          
-          {/* GRAPH */}
-          <div className="flex items-end justify-center gap-8 h-[300px] min-w-[700px] md:min-w-0">
 
+          {/* GRAPH */}
+          <div className="flex items-end justify-start md:justify-center gap-6 h-[300px] min-w-max px-2">
             {bars.map((bar, index) => (
               <div key={index} className="flex flex-col items-center">
 

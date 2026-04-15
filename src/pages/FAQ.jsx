@@ -16,10 +16,6 @@ const faqs = [
     q: "Which niches does K-Media operate in?",
     a: "We operate across multiple high-growth niches including Education, Finance, Motivation, Facts, and Podcast-style storytelling. Each niche is optimized for audience engagement and scalability."
   },
-  // {
-  //   q: "Who is the founder or CEO of K-Media?",
-  //   a: "K-Media is led by a team of content strategists and creators focused on building scalable digital assets. (You can replace this with the actual founder/CEO name if needed.)"
-  // },
   {
     q: "How does K-Media grow its channels?",
     a: "We use a data-driven content strategy that focuses on strong hooks, high retention, and consistent uploads. Our growth comes from understanding audience psychology and platform algorithms."
@@ -550,20 +546,14 @@ export default function FAQ() {
 
           {/* ── FAQ List ── */}
           <div style={{ maxWidth: 720, margin: "0 auto", width: "100%" }}>
-            <div
-              style={{
-                maxHeight: "clamp(200px, 60vh, 350px)",
-                overflowY: "auto",
-                paddingRight: "6px",
-
-                /* Hide scrollbar */
-                scrollbarWidth: "none",        // Firefox
-                msOverflowStyle: "none",       // IE/Edge
-              }}
-              className="hide-scrollbar"
-            >
-              {faqs.map((faq, index) => (
-                <div key={index} style={{ marginBottom: 12 }}>
+            <AnimatedList
+              items={faqs}
+              showGradients
+              enableArrowNavigation
+              displayScrollbar={false}
+              onItemSelect={(item, index) => toggle(index)}
+              renderItem={(faq, index) => (
+                <div style={{ marginBottom: 12 }}>
                   <FAQItem
                     faq={faq}
                     index={index}
@@ -571,8 +561,8 @@ export default function FAQ() {
                     onToggle={() => toggle(index)}
                   />
                 </div>
-              ))}
-            </div>
+              )}
+            />
           </div>
         </div>
       </section>
