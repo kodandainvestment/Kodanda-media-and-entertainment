@@ -182,7 +182,7 @@ function ChannelRow({ name, tagline, links, logo }) {
     <div className="group relative flex items-center gap-4 bg-gray-50 border border-[#C91111]/15 rounded-2xl px-5 py-4 hover:border-[#C91111]/40 transition-all">
 
       {/* Logo */}
-      <div className="w-11 h-11 rounded-full bg-[#C91111] flex items-center justify-center overflow-hidden">
+      <div className={`w-11 h-11 rounded-full flex items-center justify-center overflow-hidden ${logo ? 'bg-transparent' : 'bg-[#C91111]'}`}>
         {logo ? (
           <img
             src={logo}

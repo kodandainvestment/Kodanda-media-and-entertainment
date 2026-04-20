@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { FiMail, FiPhone, FiMapPin, FiSend, FiCheck } from "react-icons/fi";
 import menImg from "../assets/men-nobg.png";
 import ShapeGrid from "../animations/ShapeGrid";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 /* ─── Data ───────────────────────────────────────────────────────────────── */
 const info = [
@@ -388,14 +390,41 @@ export default function Contact() {
   const localScroll = Math.max(0, scrollY - sectionTop + 400);
   const menParallax = -localScroll * 0.06;
 
-  const handleSend = () => {
-    if (!form.name || !form.email) return;
-    setSending(true);
-    setTimeout(() => {
+  const handleSend = async () => {
+    if (!form.name || !form.email || !form.message) {
+      toast.error("Please fill all required fields ❗");
+      return;
+    }
+
+    try {
+      setSending(true);
+
+      await axios.post("http://localhost:8000/api/contact", {
+        name: form.name,
+        email: form.email,
+        subject: form.subject,
+        message: form.message,
+      });
+
       setSending(false);
       setSent(true);
-    }, 1600);
-    setTimeout(() => setSent(false), 5000);
+
+      toast.success("Message sent successfully 🚀");
+
+      setForm({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+
+      setTimeout(() => setSent(false), 8000);
+    } catch (error) {
+      setSending(false);
+
+      toast.error("Failed to send message ❌");
+      console.error(error);
+    }
   };
 
   return (
@@ -427,17 +456,6 @@ export default function Contact() {
         </div>
 
         <Sparks />
-
-        {/* Orbiting rings — centred on heading area */}
-        {/* <div
-          className="hidden md:block absolute top-[12%] left-1/2 w-0 h-0 z-0"
-          aria-hidden="true"
-        >
-          {" "}
-          <OrbitRing sizePx={340} animClass="anim-orbit-fwd" opacity="1" />
-          <OrbitRing sizePx={220} animClass="anim-orbit-rev" opacity="0.60" />
-          <OrbitRing sizePx={120} animClass="anim-orbit-sm" opacity="0.40" />
-        </div> */}
 
         {/* Corner blobs */}
         <div

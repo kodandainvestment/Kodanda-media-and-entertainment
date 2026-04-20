@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Navbar from "./component/navbar";
 import Footer from "./component/footer";
 import Dashboard from "./pages/Home";
@@ -9,32 +8,66 @@ import Chennals from "./pages/Chennals";
 import ViralContent from "./pages/ViralContent";
 import CaseStudies from "./pages/CaseStudies";
 import GrowthAndVision from "./pages/Growth&Vision";
+import { Toaster } from "react-hot-toast"
 
 export default function App() {
-  const [loaded, setLoaded] = useState(false);
 
   return (
     <>
-      {/* {!loaded && <Loader onDone={() => setLoaded(true)} />}
-      <div style={{ opacity: loaded ? 1 : 0, transition: "opacity 0.6s ease" }}>*/}
-        <Navbar />
-        {/* <div className="pt-[72px]">  */}
-                <div className="pt-[20px]"> 
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+        gutter={12}
+        containerStyle={{
+          top: 20,
+          right: 20,
+        }}
+        toastOptions={{
+          duration: 3000,
+          style: {
+            background: "#ffffff",
+            color: "#111827",
+            borderRadius: "12px",
+            padding: "14px 16px",
+            fontSize: "14px",
+            fontWeight: "500",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+            border: "1px solid #f1f1f1",
+          },
 
-          {/* <section id="home" style={{ height: "90vh", overflow: "hidden" }}>
-            <Dashboard />
-          </section> */}
-          <section id="home"><Dashboard /> </section>
-          <section id="about"><About /></section>
-          <section id="chennals"><Chennals /></section>
-          <section id="viral-content"><ViralContent /></section>
-          <section id="case-studies"><CaseStudies /></section>
-          <section id="growth-vision"><GrowthAndVision /></section>
-          <section id="faq"><FAQ /></section>
-          <section id="contact"><Contact /></section>
-        </div>
-        <Footer />
-       {/* </div> */}
+          success: {
+            iconTheme: {
+              primary: "#16a34a",
+              secondary: "#ffffff",
+            },
+            style: {
+              border: "1px solid #bbf7d0",
+            },
+          },
+
+          error: {
+            iconTheme: {
+              primary: "#dc2626",
+              secondary: "#ffffff",
+            },
+            style: {
+              border: "1px solid #fecaca",
+            },
+          },
+        }}
+      />
+      <Navbar />
+      <div className="pt-[20px]">
+        <section id="home"><Dashboard /> </section>
+        <section id="about"><About /></section>
+        <section id="chennals"><Chennals /></section>
+        <section id="viral-content"><ViralContent /></section>
+        <section id="case-studies"><CaseStudies /></section>
+        <section id="growth-vision"><GrowthAndVision /></section>
+        <section id="faq"><FAQ /></section>
+        <section id="contact"><Contact /></section>
+      </div>
+      <Footer />
     </>
   );
 }

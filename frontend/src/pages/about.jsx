@@ -711,10 +711,7 @@ function IconStrip() {
               key={i}
               className="icon-strip-item"
               style={{
-                transform:
-                  window.innerWidth >= 640
-                    ? `translateY(${yOffset}px)`
-                    : "translateY(0px)", // ✅ flat on mobile
+                transform: `translateY(${yOffset}px)`
               }}
             >
               {icon}

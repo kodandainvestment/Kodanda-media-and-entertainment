@@ -22,7 +22,7 @@ const services = [
     link: "https://www.instagram.com/bollywoodinside_",
   },
   {
-    name: "sarcastic_samachar",
+    name: "sarcastic samachar",
     link: "https://www.instagram.com/sarcastic.samachar?igsh=MWg4OW1meWZwcWR5Yg==",
   },
 ];
