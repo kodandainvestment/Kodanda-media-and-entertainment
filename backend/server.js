@@ -7,14 +7,21 @@ const Contact = require('./models/Contact')
 const app = express()
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174", "https://kodandamedia.com/"],
-  })
-);
+    origin: ["http://localhost:5173", "http://localhost:5174", "https://kodandamedia.com"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }));
 app.use(express.json())
+app.options("*", cors(corsOptions));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB error:', err))
+
+// text route
+app.get("/", (req, res) => {
+  res.send("Backend is running 🚀");
+});
 
 // Contact form
 app.post('/api/contact', async (req, res) => {
