@@ -399,7 +399,7 @@ export default function Contact() {
     try {
       setSending(true);
 
-      await axios.post("http://localhost:8000/api/contact", {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/contact`, {
         name: form.name,
         email: form.email,
         subject: form.subject,
