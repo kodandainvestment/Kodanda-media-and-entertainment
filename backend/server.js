@@ -7,7 +7,7 @@ const Contact = require('./models/Contact')
 const app = express()
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: ["http://localhost:5173", "http://localhost:5174", "https://kodandamedia.com/"],
   })
 );
 app.use(express.json())
