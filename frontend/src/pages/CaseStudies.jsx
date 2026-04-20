@@ -181,7 +181,7 @@ export default function CaseStudies() {
           </div>
 
           {/* Mobile Scroll */}
-          <div className="flex gap-4 overflow-x-auto sm:hidden no-scrollbar px-1 custom-scroll">
+          <div className="flex gap-4 overflow-x-auto sm:hidden no-scrollbar px-2 custom-scroll pb-4 mt-2">
             {caseStudies.map((cs) => (
               <div
                 key={cs.channel}
@@ -242,7 +242,7 @@ export default function CaseStudies() {
           </h3>
 
           {/* Mobile Scroll */}
-          <div className="flex gap-4 overflow-x-auto sm:hidden no-scrollbar px-1 custom-scroll">
+          <div className="flex gap-4 overflow-x-auto sm:hidden no-scrollbar px-2 custom-scroll pb-4 mt-2">
             {videos.map((v) => (
               <div
                 key={v.title}
@@ -305,45 +305,45 @@ export default function CaseStudies() {
           </h3>
 
           {/* ✅ MOBILE */}
-          <div className="sm:hidden flex gap-4 overflow-x-auto overflow-y-hidden px-2 custom-scroll pb-4 mt-2">
+          <div className="sm:hidden flex gap-4 overflow-x-auto overflow-y-hidden px-2 custom-scroll pb-4 mt-6">            
             {metrics.slice(0, 5).map((m, i) => {
-              const isRed = i % 2 !== 0;
+            const isRed = i % 2 !== 0;
 
-              return (
-                <div key={m.label} className="relative flex-shrink-0 w-28">
-                  {/* Outer Border */}
-                  <div className="absolute inset-0 rounded-full border-2 border-[#C91111]/40 scale-110" />
+            return (
+              <div key={m.label} className="relative flex-shrink-0 w-24">
+                {/* Outer Border */}
+                <div className="absolute -inset-0 rounded-full border-2 border-[#C91111]/40 " />
 
-                  {/* Inner Card */}
-                  <div
-                    className={`w-28 h-28 rounded-full flex flex-col items-center justify-center text-center border-2 transition-all duration-300 relative
+                {/* Inner Card */}
+                <div
+                  className={`w-24 h-24 rounded-full flex flex-col items-center justify-center text-center border-2 transition-all duration-300 relative
     ${isRed
-                        ? "bg-[#C91111] text-white border-[#C91111]"
-                        : "bg-white text-gray-900 border-[#C91111]"
+                      ? "bg-[#C91111] text-white border-[#C91111]"
+                      : "bg-white text-gray-900 border-[#C91111]"
+                    }`}
+                >
+                  <div
+                    className={`mb-1 ${isRed ? "text-white" : "text-[#C91111]"
                       }`}
                   >
-                    <div
-                      className={`mb-1 ${isRed ? "text-white" : "text-[#C91111]"
-                        }`}
-                    >
-                      {m.icon}
-                    </div>
-
-                    <p className="font-bold text-sm">
-                      <CountUp from={0} to={m.value} duration={1.5} />
-                      {m.suffix}
-                    </p>
-
-                    <p
-                      className={`text-[9px] px-1 ${isRed ? "text-white/80" : "text-gray-500"
-                        }`}
-                    >
-                      {m.label}
-                    </p>
+                    {m.icon}
                   </div>
+
+                  <p className="font-bold text-xs">
+                    <CountUp from={0} to={m.value} duration={1.5} />
+                    {m.suffix}
+                  </p>
+
+                  <p
+                    className={`text-[8px] px-1 ${isRed ? "text-white/80" : "text-gray-500"
+                      }`}
+                  >
+                    {m.label}
+                  </p>
                 </div>
-              );
-            })}
+              </div>
+            );
+          })}
           </div>
 
           {/* ✅ DESKTOP */}
