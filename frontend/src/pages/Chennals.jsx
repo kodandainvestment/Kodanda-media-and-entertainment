@@ -19,12 +19,12 @@ const channelsData = {
       tagline: "Curiosity-driven content",
       // logo: "/unfiltered.png",
       links: {
-        instagram: "https://instagram.com/factverse",
-        youtube: "https://youtube.com/factverse",
-        facebook: "https://facebook.com/factverse",
-        twitter: "https://twitter.com/factverse",
-        linkedin: "https://linkedin.com/factverse",
-        thread: "https://wa.me/911234567890",
+        instagram: "#",
+        youtube: "#",
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+        thread: "#",
       },
     },
     {
@@ -32,12 +32,12 @@ const channelsData = {
       tagline: "Learn visually, understand deeply",
       // logo: "/unfiltered.png",
       links: {
-        instagram: "https://instagram.com/factverse",
-        youtube: "https://youtube.com/factverse",
-        facebook: "https://facebook.com/factverse",
-        twitter: "https://twitter.com/factverse",
-        linkedin: "https://linkedin.com/factverse",
-        thread: "https://wa.me/911234567890",
+        instagram: "#",
+        youtube: "#",
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+        thread: "#",
       },
     },
   ],
@@ -60,12 +60,12 @@ const channelsData = {
       tagline: "Discipline creates success",
       // logo: "/unfiltered.png",
       links: {
-        instagram: "https://instagram.com/factverse",
-        youtube: "https://youtube.com/factverse",
-        facebook: "https://facebook.com/factverse",
-        twitter: "https://twitter.com/factverse",
-        linkedin: "https://linkedin.com/factverse",
-        thread: "https://wa.me/911234567890",
+        instagram: "#",
+        youtube: "#",
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+        thread: "#",
       },
     },
     {
@@ -73,12 +73,12 @@ const channelsData = {
       tagline: "Real stories, real journeys",
       // logo: "/unfiltered.png",
       links: {
-        instagram: "https://instagram.com/factverse",
-        youtube: "https://youtube.com/factverse",
-        facebook: "https://facebook.com/factverse",
-        twitter: "https://twitter.com/factverse",
-        linkedin: "https://linkedin.com/factverse",
-        thread: "https://wa.me/911234567890",
+        instagram: "#",
+        youtube: "#",
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+        thread: "#",
       },
     },
   ],
@@ -89,12 +89,12 @@ const channelsData = {
       tagline: "Inner growth, deeper understanding",
       // logo: "/unfiltered.png",
       links: {
-        instagram: "https://instagram.com/factverse",
-        youtube: "https://youtube.com/factverse",
-        facebook: "https://facebook.com/factverse",
-        twitter: "https://twitter.com/factverse",
-        linkedin: "https://linkedin.com/factverse",
-        thread: "https://wa.me/911234567890",
+        instagram: "#",
+        youtube: "#",
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+        thread: "#",
       },
     },
   ],
@@ -105,12 +105,12 @@ const channelsData = {
       tagline: "Simplifying money matters",
       // logo: "/unfiltered.png",
       links: {
-        instagram: "https://instagram.com/factverse",
-        youtube: "https://youtube.com/factverse",
-        facebook: "https://facebook.com/factverse",
-        twitter: "https://twitter.com/factverse",
-        linkedin: "https://linkedin.com/factverse",
-        thread: "https://wa.me/911234567890",
+        instagram: "#",
+        youtube: "#",
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+        thread: "#",
       },
     },
     {
@@ -118,12 +118,12 @@ const channelsData = {
       tagline: "Learn from real business journeys",
       // logo: "/unfiltered.png",
       links: {
-        instagram: "https://instagram.com/factverse",
-        youtube: "https://youtube.com/factverse",
-        facebook: "https://facebook.com/factverse",
-        twitter: "https://twitter.com/factverse",
-        linkedin: "https://linkedin.com/factverse",
-        thread: "https://wa.me/911234567890",
+        instagram: "#",
+        youtube: "#",
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+        thread: "#",
       },
     },
   ],
@@ -158,12 +158,12 @@ const channelsData = {
       tagline: "The future, explained today",
       // logo: "/unfiltered.png",
       links: {
-        instagram: "https://instagram.com/factverse",
-        youtube: "https://youtube.com/factverse",
-        facebook: "https://facebook.com/factverse",
-        twitter: "https://twitter.com/factverse",
-        linkedin: "https://linkedin.com/factverse",
-        thread: "https://wa.me/911234567890",
+        instagram: "#",
+        youtube: "#",
+        facebook: "#",
+        twitter: "#",
+        linkedin: "#",
+        thread: "#",
       },
     },
   ],
@@ -179,70 +179,76 @@ const INNER_RING_R = 130; // rotating inner ring
 
 function ChannelRow({ name, tagline, links, logo }) {
   return (
-    <div className="group relative flex items-center gap-4 bg-gray-50 border border-[#C91111]/15 rounded-2xl px-5 py-4 hover:border-[#C91111]/40 transition-all">
+    <div className="group relative flex items-start gap-4 bg-gray-50 border border-[#C91111]/15 rounded-2xl px-5 py-4 hover:border-[#C91111]/40 transition-all">
 
       {/* Logo */}
-      <div className={`w-11 h-11 rounded-full flex items-center justify-center overflow-hidden ${logo ? 'bg-transparent' : 'bg-[#C91111]'}`}>
+      <div className={`w-11 h-11 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 ${logo ? 'bg-transparent' : 'bg-[#C91111]'}`}>
         {logo ? (
-          <img
-            src={logo}
-            alt={name}
-            className="w-full h-full object-cover"
-          />
+          <img src={logo} alt={name} className="w-full h-full object-cover" />
         ) : (
           <FaYoutube className="text-white text-lg" />
         )}
       </div>
 
-      <div>
+      {/* ✅ RIGHT SIDE (TEXT + ICONS TOGETHER) */}
+      <div className="flex flex-col flex-1">
+
+        {/* Text */}
         <p className="text-gray-900 font-bold text-base">{name}</p>
         <p className="text-[#C91111] text-sm">{tagline}</p>
-      </div>
 
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        {/* ✅ Icons (Mobile = below text, Desktop = right hover) */}
+        <div className="
+          flex gap-3 mt-2 flex-wrap
+          lg:absolute lg:right-4 lg:top-1/2 lg:-translate-y-1/2
+          lg:mt-0
+          opacity-100 lg:opacity-0 lg:group-hover:opacity-100
+          transition-all duration-300
+        ">
 
-        {links?.instagram && (
-          <a href={links.instagram} target="_blank">
-            <FaInstagram className="text-pink-500 cursor-pointer hover:scale-110 transition" />
-          </a>
-        )}
+          {links?.instagram && (
+            <a href={links.instagram} target="_blank">
+              <FaInstagram className="text-pink-500 hover:scale-110 transition" />
+            </a>
+          )}
 
-        {links?.youtube && (
-          <a href={links.youtube} target="_blank">
-            <FaYoutube className="text-red-600 cursor-pointer hover:scale-110 transition" />
-          </a>
-        )}
+          {links?.youtube && (
+            <a href={links.youtube} target="_blank">
+              <FaYoutube className="text-red-600 hover:scale-110 transition" />
+            </a>
+          )}
 
-        {links?.facebook && (
-          <a href={links.facebook} target="_blank">
-            <FaFacebookF className="text-blue-600 cursor-pointer hover:scale-110 transition" />
-          </a>
-        )}
+          {links?.facebook && (
+            <a href={links.facebook} target="_blank">
+              <FaFacebookF className="text-blue-600 hover:scale-110 transition" />
+            </a>
+          )}
 
-        {links?.twitter && (
-          <a href={links.twitter} target="_blank">
-            <FaXTwitter className="text-sky-500 cursor-pointer hover:scale-110 transition" />
-          </a>
-        )}
+          {links?.twitter && (
+            <a href={links.twitter} target="_blank">
+              <FaXTwitter className="text-sky-500 hover:scale-110 transition" />
+            </a>
+          )}
 
-        {links?.linkedin && (
-          <a href={links.linkedin} target="_blank">
-            <FaLinkedinIn className="text-blue-700 cursor-pointer hover:scale-110 transition" />
-          </a>
-        )}
+          {links?.linkedin && (
+            <a href={links.linkedin} target="_blank">
+              <FaLinkedinIn className="text-blue-700 hover:scale-110 transition" />
+            </a>
+          )}
 
-        {links?.thread && (
-          <a href={links.thread} target="_blank">
-            <FaThreads className="text-black cursor-pointer hover:scale-110 transition" />
-          </a>
-        )}
+          {links?.thread && (
+            <a href={links.thread} target="_blank">
+              <FaThreads className="text-black hover:scale-110 transition" />
+            </a>
+          )}
 
-        {links?.snap && (
-          <a href={links.snap} target="_blank">
-            <FaSnapchat className="text-yellow-500 cursor-pointer hover:scale-110 transition" />
-          </a>
-        )}
+          {links?.snap && (
+            <a href={links.snap} target="_blank">
+              <FaSnapchat className="text-yellow-500 hover:scale-110 transition" />
+            </a>
+          )}
 
+        </div>
       </div>
     </div>
   );
