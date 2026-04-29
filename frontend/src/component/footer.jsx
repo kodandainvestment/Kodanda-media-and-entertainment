@@ -11,6 +11,7 @@ import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
 import PrivacyPolicy from "../content/PrivacyPolicy";
 import TermsCondition from "../content/Terms&Condition";
 import { FaThreads } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 const services = [
   {
@@ -49,14 +50,9 @@ function scrollTo(id) {
 }
 
 export default function Footer() {
-  const [showPrivacy, setShowPrivacy] = useState(false);
-  const [showTerms, setShowTerms] = useState(false);
 
   return (
     <>
-      {showPrivacy && <PrivacyPolicy onClose={() => setShowPrivacy(false)} />}
-      {showTerms && <TermsCondition onClose={() => setShowTerms(false)} />}
-
       <footer className="bg-black border-t border-white/10 text-gray-200">
         <div className="max-w-7xl mx-auto px-6 pt-14 pb-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 border-b border-gray-700/60 pb-10">
@@ -132,20 +128,14 @@ export default function Footer() {
               </p>
               <ul className="space-y-2 text-sm mb-8">
                 <li>
-                  <button
-                    onClick={() => setShowPrivacy(true)}
-                    className="hover:text-[#C91111] transition-colors text-left"
-                  >
+                  <Link to="/privacy-policy" className="hover:text-[#C91111]">
                     Privacy Policy
-                  </button>
+                  </Link>
                 </li>
                 <li>
-                  <button
-                    onClick={() => setShowTerms(true)}
-                    className="hover:text-[#C91111] transition-colors text-left"
-                  >
+                  <Link to="/terms-condition" className="hover:text-[#C91111]">
                     Terms of Service
-                  </button>
+                  </Link>
                 </li>
               </ul>
 
@@ -168,22 +158,7 @@ export default function Footer() {
           </div>
 
           {/* Bottom bar */}
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-            <p>© 2026 Kodanda Media and Entertainment. All rights reserved.</p>
-            <div className="flex gap-4">
-              <button
-                onClick={() => setShowPrivacy(true)}
-                className="hover:text-[#C91111] transition-colors"
-              >
-                Privacy Policy
-              </button>
-              <button
-                onClick={() => setShowTerms(true)}
-                className="hover:text-[#C91111] transition-colors"
-              >
-                Terms of Service
-              </button>
-            </div>
+          <div className="pt-6 flex items-center justify-center text-xs text-gray-500 text-center">            <p>© 2026 Kodanda Media and Entertainment. All rights reserved.</p>
           </div>
         </div>
       </footer>

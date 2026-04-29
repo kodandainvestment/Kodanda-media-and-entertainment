@@ -9,6 +9,29 @@ import ViralContent from "./pages/ViralContent";
 import CaseStudies from "./pages/CaseStudies";
 import GrowthAndVision from "./pages/Growth&Vision";
 import { Toaster } from "react-hot-toast"
+import PrivacyPolicy from "./content/PrivacyPolicy";
+import TermsCondition from "./content/Terms&Condition";
+import { Routes, Route } from "react-router-dom";
+
+// ✅ Home Layout (your full website)
+function HomeLayout() {
+  return (
+    <>
+      <Navbar />
+      <div className="pt-[20px]">
+        <section id="home"><Dashboard /></section>
+        <section id="about"><About /></section>
+        <section id="chennals"><Chennals /></section>
+        <section id="viral-content"><ViralContent /></section>
+        <section id="case-studies"><CaseStudies /></section>
+        <section id="growth-vision"><GrowthAndVision /></section>
+        <section id="faq"><FAQ /></section>
+        <section id="contact"><Contact /></section>
+      </div>
+      <Footer />
+    </>
+  );
+}
 
 export default function App() {
 
@@ -56,18 +79,14 @@ export default function App() {
           },
         }}
       />
-      <Navbar />
-      <div className="pt-[20px]">
-        <section id="home"><Dashboard /> </section>
-        <section id="about"><About /></section>
-        <section id="chennals"><Chennals /></section>
-        <section id="viral-content"><ViralContent /></section>
-        <section id="case-studies"><CaseStudies /></section>
-        <section id="growth-vision"><GrowthAndVision /></section>
-        <section id="faq"><FAQ /></section>
-        <section id="contact"><Contact /></section>
-      </div>
-      <Footer />
+      <Routes>
+        {/* ✅ Main website */}
+        <Route path="/" element={<HomeLayout />} />
+
+        {/* ✅ Separate pages (NO navbar/footer) */}
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-condition" element={<TermsCondition />} />
+      </Routes>
     </>
   );
 }

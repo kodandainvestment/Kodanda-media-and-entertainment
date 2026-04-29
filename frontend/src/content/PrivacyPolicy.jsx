@@ -1,23 +1,32 @@
-export default function PrivacyPolicy({ onClose }) {
+import { useNavigate } from "react-router-dom";
+export default function PrivacyPolicy() {
+  const navigate = useNavigate();
+
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4">
-      <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[85vh] flex flex-col shadow-2xl">
+    <div className="min-h-screen bg-white text-gray-800 px-6 py-12">
+      <div className="max-w-4xl mx-auto">
+
+        <button
+          onClick={() => navigate("/")}
+          className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#C91111] text-[#C91111] font-medium text-sm transition-all duration-300 hover:bg-[#C91111] hover:text-white hover:shadow-lg"
+        >
+          <span className="transition-transform duration-300 group-hover:-translate-x-1">
+            ←
+          </span>
+          Back to Home
+        </button>
 
         {/* Header */}
-        <div className="flex items-center justify-between px-8 py-5 border-b border-gray-100">
-          <h2 className="text-xl font-bold text-gray-900">Privacy Policy</h2>
-          <button
-            onClick={onClose}
-            className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 transition text-lg leading-none"
-          >
-            ×
-          </button>
-        </div>
+        <h1 className="text-3xl font-bold mb-6 text-center">
+          Privacy Policy
+        </h1>
 
         {/* Content */}
-        <div className="overflow-y-auto px-8 py-6 text-sm text-gray-600 leading-relaxed space-y-6">
+        <div className="text-sm text-gray-600 leading-relaxed space-y-6">
 
-          <p className="text-gray-400 text-xs">Last updated: January 2026</p>
+          <p className="text-gray-400 text-xs text-center">
+            Last updated: January 2026
+          </p>
 
           {/* 1 */}
           <div>
@@ -33,8 +42,12 @@ export default function PrivacyPolicy({ onClose }) {
             <p className="mb-2">We may collect the following types of information:</p>
 
             <ul className="list-disc pl-5 space-y-1">
-              <li><span className="font-medium text-gray-700">Personal Information:</span> Name, email address, contact details</li>
-              <li><span className="font-medium text-gray-700">Non-Personal Information:</span> Browser type, IP address, device info, website usage data</li>
+              <li>
+                <span className="font-medium text-gray-700">Personal Information:</span> Name, email address, contact details
+              </li>
+              <li>
+                <span className="font-medium text-gray-700">Non-Personal Information:</span> Browser type, IP address, device info, website usage data
+              </li>
             </ul>
           </div>
 
