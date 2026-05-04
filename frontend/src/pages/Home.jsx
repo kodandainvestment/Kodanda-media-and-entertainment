@@ -5,6 +5,7 @@ import { FaThreads } from "react-icons/fa6";
 import { FiTwitter } from "react-icons/fi";
 import { CiFacebook, CiLinkedin, CiYoutube } from "react-icons/ci";
 import { AiOutlinePinterest } from "react-icons/ai";
+import { Helmet } from "react-helmet-async";
 
 export default function Dashboard() {
   const [decryptKey, setDecryptKey] = useState(0);
@@ -32,12 +33,18 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <section
-      ref={containerRef}
-      className="bg-white via-gray-50 to-white h-[80vh] sm:h-[100vh] w-full flex flex-col items-center justify-center text-center px-6 relative overflow-hidden"
-    >
-      {/* Enhanced animations and keyframes */}
-      <style>{`
+    <>
+      <Helmet>
+        <title>Kodanda Media Pvt Ltd | Digital Media Company India</title>
+        <link rel="canonical" href="https://kodandamedia.com/" />
+      </Helmet>
+
+      <section
+        ref={containerRef}
+        className="bg-white via-gray-50 to-white h-[80vh] sm:h-[100vh] w-full flex flex-col items-center justify-center text-center px-6 relative overflow-hidden"
+      >
+        {/* Enhanced animations and keyframes */}
+        <style>{`
         @font-face {
           font-family: 'Gadugi';
           src: url('/src/Fonts/gadugib.ttf') format('truetype');
@@ -159,134 +166,169 @@ export default function Dashboard() {
         }
       `}</style>
 
-      {/* Animated gradient background orbs */}
-      <div
-        className="absolute w-[600px] h-[600px] rounded-full morph-blob opacity-20 blur-3xl"
-        style={{
-          background:
-            "linear-gradient(135deg, #C91111 0%, #ff6b6b 50%, #ffa5a5 100%)",
-          top: "10%",
-          left: "10%",
-          transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px)`,
-          transition: "transform 0.3s ease-out",
-        }}
-      />
-      <div
-        className="absolute w-[500px] h-[500px] rounded-full morph-blob opacity-15 blur-3xl"
-        style={{
-          background:
-            "linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 50%, #2a2a2a 100%)",
-          bottom: "10%",
-          right: "10%",
-          transform: `translate(${mousePos.x * -20}px, ${mousePos.y * -20}px)`,
-          transition: "transform 0.3s ease-out",
-          animationDelay: "-4s",
-        }}
-      />
-
-      {/* 3D Floating geometric shapes — hidden on mobile */}
-      {/* Floating Social Media Icons */}
-      <div className="absolute inset-0 overflow-hidden hidden sm:block">
-        {[
-          { Icon: FaInstagram, top: "15%", left: "8%", link: "https://www.instagram.com/kodandamedia?igsh=MWE3ODQ4d2ZjYzJjZw%3D%3D" },
-          { Icon: FaWhatsapp, top: "50%", left: "10%", link: "https://wa.me/1234567890" },
-          { Icon: FiTwitter, top: "20%", right: "12%", link: "https://twitter.com" },
-          { Icon: CiFacebook, top: "50%", right: "8%", link: "https://www.facebook.com/@kodandamedia" },
-          { Icon: CiYoutube, bottom: "20%", right: "15%", link: "https://www.youtube.com/@kodandamedia.official" },
-          { Icon: AiOutlinePinterest, bottom: "25%", left: "20%", link: "https://pinterest.com" },
-          { Icon: CiLinkedin, top: "10%", left: "30%", link: "https://www.linkedin.com/company/kodanda-media-and-entertainment-pvt-ltd/posts/?feedView=all" },
-          // { Icon: FaThreads, bottom: "35%", right: "25%", link: "https://threads.net" },
-        ].map((item, i) => {
-          const Icon = item.Icon;
-          return (
-            <div
-              key={i}
-              className={`absolute social-float-${i}`}
-              style={{
-                top: item.top,
-                left: item.left,
-                right: item.right,
-                bottom: item.bottom,
-              }}
-            >
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block hover:scale-110 transition-transform duration-300"
-              >
-                <Icon className="text-[#C91111] text-3xl lg:text-4xl opacity-80 drop-shadow-md cursor-pointer" />
-              </a>            
-              </div>
-          );
-        })}
-      </div>
-
-      {/* Content */}
-      <div className="relative z-20 flex flex-col items-center perspective-container px-4 w-full max-w-4xl mx-auto">
-        <p className="text-xs sm:text-sm lg:text-lg tracking-[0.15em] sm:tracking-[0.2em] uppercase text-gray-500 mb-3 sm:mb-6 text-center">
-          Kodanda Media and
-          <DecryptedText
-            key={decryptKey}
-            text=" Entertainment"
-            animateOn="view"
-            revealDirection="start"
-            sequential
-            speed={150}
-            maxIterations={20}
-            characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!?#@"
-            useOriginalCharsOnly={false}
-          />
-        </p>
-
-        <h1
+        {/* Animated gradient background orbs */}
+        <div
+          className="absolute w-[600px] h-[600px] rounded-full morph-blob opacity-20 blur-3xl"
           style={{
-            fontFamily: "'Playfair Display', Georgia, serif",
-            fontWeight: 900,
-            fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
-            lineHeight: 1.08,
-            letterSpacing: "-0.02em",
-            color: "#0f0f0f",
-            margin: "0 0 16px",
+            background:
+              "linear-gradient(135deg, #C91111 0%, #ff6b6b 50%, #ffa5a5 100%)",
+            top: "10%",
+            left: "10%",
+            transform: `translate(${mousePos.x * 30}px, ${mousePos.y * 30}px)`,
+            transition: "transform 0.3s ease-out",
           }}
-        >
-          <span className="text-[#c91111]">Building </span>high-impact digital
-          media{" "}
-          <span
+        />
+        <div
+          className="absolute w-[500px] h-[500px] rounded-full morph-blob opacity-15 blur-3xl"
+          style={{
+            background:
+              "linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 50%, #2a2a2a 100%)",
+            bottom: "10%",
+            right: "10%",
+            transform: `translate(${mousePos.x * -20}px, ${mousePos.y * -20}px)`,
+            transition: "transform 0.3s ease-out",
+            animationDelay: "-4s",
+          }}
+        />
+
+        {/* 3D Floating geometric shapes — hidden on mobile */}
+        {/* Floating Social Media Icons */}
+        <div className="absolute inset-0 overflow-hidden hidden sm:block">
+          {[
+            {
+              Icon: FaInstagram,
+              top: "15%",
+              left: "8%",
+              link: "https://www.instagram.com/kodandamedia?igsh=MWE3ODQ4d2ZjYzJjZw%3D%3D",
+            },
+            {
+              Icon: FaWhatsapp,
+              top: "50%",
+              left: "10%",
+              link: "https://wa.me/1234567890",
+            },
+            {
+              Icon: FiTwitter,
+              top: "20%",
+              right: "12%",
+              link: "https://twitter.com",
+            },
+            {
+              Icon: CiFacebook,
+              top: "50%",
+              right: "8%",
+              link: "https://www.facebook.com/@kodandamedia",
+            },
+            {
+              Icon: CiYoutube,
+              bottom: "20%",
+              right: "15%",
+              link: "https://www.youtube.com/@kodandamedia.official",
+            },
+            {
+              Icon: AiOutlinePinterest,
+              bottom: "25%",
+              left: "20%",
+              link: "https://pinterest.com",
+            },
+            {
+              Icon: CiLinkedin,
+              top: "10%",
+              left: "30%",
+              link: "https://www.linkedin.com/company/kodanda-media-and-entertainment-pvt-ltd/posts/?feedView=all",
+            },
+            // { Icon: FaThreads, bottom: "35%", right: "25%", link: "https://threads.net" },
+          ].map((item, i) => {
+            const Icon = item.Icon;
+            return (
+              <div
+                key={i}
+                className={`absolute social-float-${i}`}
+                style={{
+                  top: item.top,
+                  left: item.left,
+                  right: item.right,
+                  bottom: item.bottom,
+                }}
+              >
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block hover:scale-110 transition-transform duration-300"
+                >
+                  <Icon className="text-[#C91111] text-3xl lg:text-4xl opacity-80 drop-shadow-md cursor-pointer" />
+                </a>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Content */}
+        <div className="relative z-20 flex flex-col items-center perspective-container px-4 w-full max-w-4xl mx-auto">
+          <p className="text-xs sm:text-sm lg:text-lg tracking-[0.15em] sm:tracking-[0.2em] uppercase text-gray-500 mb-3 sm:mb-6 text-center">
+            Kodanda Media and
+            <DecryptedText
+              key={decryptKey}
+              text=" Entertainment"
+              animateOn="view"
+              revealDirection="start"
+              sequential
+              speed={150}
+              maxIterations={20}
+              characters="ABCDEFGHIJKLMNOPQRSTUVWXYZ!?#@"
+              useOriginalCharsOnly={false}
+            />
+          </p>
+
+          <h1
             style={{
-              color: "#C91111",
-              position: "relative",
-              display: "inline-block",
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 900,
+              fontSize: "clamp(2.2rem, 5.5vw, 4rem)",
+              lineHeight: 1.08,
+              letterSpacing: "-0.02em",
+              color: "#0f0f0f",
+              margin: "0 0 16px",
             }}
           >
-            brands
-            {/* Animated underline */}
-            <svg
-              viewBox="0 0 240 14"
+            <span className="text-[#c91111]">Building </span>high-impact digital
+            media{" "}
+            <span
               style={{
-                position: "absolute",
-                bottom: -6,
-                left: 0,
-                width: "100%",
-                overflow: "visible",
+                color: "#C91111",
+                position: "relative",
+                display: "inline-block",
               }}
             >
-              <path
-                d="M 3 10 Q 120 3 237 10"
-                stroke="#C91111"
-                strokeWidth="3"
-                fill="none"
-                strokeLinecap="round"
-                strokeDasharray="300"
-                strokeDashoffset="300"
-                style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
-              />
-            </svg>
-          </span>
-        </h1>
+              brands
+              {/* Animated underline */}
+              <svg
+                viewBox="0 0 240 14"
+                style={{
+                  position: "absolute",
+                  bottom: -6,
+                  left: 0,
+                  width: "100%",
+                  overflow: "visible",
+                }}
+              >
+                <path
+                  d="M 3 10 Q 120 3 237 10"
+                  stroke="#C91111"
+                  strokeWidth="3"
+                  fill="none"
+                  strokeLinecap="round"
+                  strokeDasharray="300"
+                  strokeDashoffset="300"
+                  style={{ animation: "shimmer-path 1.2s 0.3s ease forwards" }}
+                />
+              </svg>
+            </span>
+          </h1>
 
-        {/* ── Bottom-center arc decoration ── */}
-        {/* <svg
+          {/* ── Bottom-center arc decoration ── */}
+          {/* <svg
           width="320"
           height="90"
           viewBox="0 0 320 80"
@@ -318,47 +360,50 @@ export default function Dashboard() {
           />
         </svg> */}
 
-        <p
-          className="mt-5 sm:mt-8 text-gray-500 text-sm sm:text-base lg:text-lg max-w-xl text-center px-2"
-          style={{
-            animation: "scaleUp 1.2s cubic-bezier(0.22,1,0.36,1) 0.5s forwards",
-            opacity: 0,
-          }}
-        >
-          From high-impact podcasts to life-changing educational content,
-          Kodanda Media powers a diverse network of channels designed to inform,
-          inspire, and entertain a global audience.
-        </p>
+          <p
+            className="mt-5 sm:mt-8 text-gray-500 text-sm sm:text-base lg:text-lg max-w-xl text-center px-2"
+            style={{
+              animation:
+                "scaleUp 1.2s cubic-bezier(0.22,1,0.36,1) 0.5s forwards",
+              opacity: 0,
+            }}
+          >
+            From high-impact podcasts to life-changing educational content,
+            Kodanda Media powers a diverse network of channels designed to
+            inform, inspire, and entertain a global audience.
+          </p>
 
-        <div className="mt-7 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto items-center">
-          <button
-            onClick={() =>
-              document
-                .getElementById("chennals")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="btn-left relative bg-gradient-to-r from-[#C91111] to-[#a50e0e] text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#C91111]/30 group overflow-hidden w-full sm:w-auto text-sm sm:text-base"
-          >
-            <span className="relative z-10">Explore Our Channels</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-[#ff4444] to-[#C91111] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </button>
-          <button
-            onClick={() =>
-              document
-                .getElementById("contact")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="btn-right relative border-2 border-[#C91111] text-[#C91111] px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:bg-[#C91111] hover:text-white w-full sm:w-auto text-sm sm:text-base"
-          >
-            <span className="relative z-10">Build Viral Content Together</span>
-          </button>
-        </div>
-        {/* ── Bottom-center arc decoration ── */}
-        <svg
-          width="320"
-          height="100"
-          viewBox="0 0 320 80"
-          className="
+          <div className="mt-7 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto items-center">
+            <button
+              onClick={() =>
+                document
+                  .getElementById("chennals")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="btn-left relative bg-gradient-to-r from-[#C91111] to-[#a50e0e] text-white px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#C91111]/30 group overflow-hidden w-full sm:w-auto text-sm sm:text-base"
+            >
+              <span className="relative z-10">Explore Our Channels</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#ff4444] to-[#C91111] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </button>
+            <button
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="btn-right relative border-2 border-[#C91111] text-[#C91111] px-7 sm:px-8 py-3.5 sm:py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:bg-[#C91111] hover:text-white w-full sm:w-auto text-sm sm:text-base"
+            >
+              <span className="relative z-10">
+                Build Viral Content Together
+              </span>
+            </button>
+          </div>
+          {/* ── Bottom-center arc decoration ── */}
+          <svg
+            width="320"
+            height="100"
+            viewBox="0 0 320 80"
+            className="
   hidden
   sm:block
   sm:absolute
@@ -366,52 +411,53 @@ export default function Dashboard() {
   left-1/2
   -translate-x-1/2
 "
-          style={{
-            opacity: 0.35,
-            pointerEvents: "none",
-          }}
-          aria-hidden="true"
-        >
-          <path
-            d="M 10 70 Q 160 10 310 70"
-            stroke="#C91111"
-            strokeWidth="2"
-            fill="none"
-            strokeDasharray="6 4"
-            strokeLinecap="round"
-          />
-          <path
-            d="M 40 70 Q 160 25 280 70"
-            stroke="#C91111"
-            strokeWidth="1"
-            fill="none"
-            strokeDasharray="4 6"
-            strokeLinecap="round"
-          />
-        </svg>
-      </div>
+            style={{
+              opacity: 0.35,
+              pointerEvents: "none",
+            }}
+            aria-hidden="true"
+          >
+            <path
+              d="M 10 70 Q 160 10 310 70"
+              stroke="#C91111"
+              strokeWidth="2"
+              fill="none"
+              strokeDasharray="6 4"
+              strokeLinecap="round"
+            />
+            <path
+              d="M 40 70 Q 160 25 280 70"
+              stroke="#C91111"
+              strokeWidth="1"
+              fill="none"
+              strokeDasharray="4 6"
+              strokeLinecap="round"
+            />
+          </svg>
+        </div>
 
-      {/* Bottom wave decoration */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
-        <svg
-          viewBox="0 0 1440 120"
-          className="absolute bottom-0 w-full"
-          style={{ animation: "float 8s ease-in-out infinite" }}
-        >
-          <path
-            d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,90 1440,60 L1440,120 L0,120 Z"
-            fill="url(#waveGrad)"
-            opacity="0.1"
-          />
-          <defs>
-            <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#C91111" />
-              <stop offset="50%" stopColor="#ff6b6b" />
-              <stop offset="100%" stopColor="#C91111" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-    </section>
+        {/* Bottom wave decoration */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
+          <svg
+            viewBox="0 0 1440 120"
+            className="absolute bottom-0 w-full"
+            style={{ animation: "float 8s ease-in-out infinite" }}
+          >
+            <path
+              d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,90 1440,60 L1440,120 L0,120 Z"
+              fill="url(#waveGrad)"
+              opacity="0.1"
+            />
+            <defs>
+              <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#C91111" />
+                <stop offset="50%" stopColor="#ff6b6b" />
+                <stop offset="100%" stopColor="#C91111" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </section>
+    </>
   );
 }

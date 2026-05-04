@@ -134,7 +134,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link to="/terms-condition" className="hover:text-[#C91111]">
-                    Terms of Service
+                    Terms & Condition
                   </Link>
                 </li>
               </ul>
