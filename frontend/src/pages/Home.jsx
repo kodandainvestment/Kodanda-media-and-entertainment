@@ -327,39 +327,6 @@ export default function Dashboard() {
             </span>
           </h1>
 
-          {/* ── Bottom-center arc decoration ── */}
-          {/* <svg
-          width="320"
-          height="90"
-          viewBox="0 0 320 80"
-          style={{
-            position: "absolute",
-            bottom: 40,
-            left: "50%",
-            transform: "translateX(-50%)",
-            opacity: 0.35,
-            pointerEvents: "none",
-          }}
-          aria-hidden="true"
-        >
-          <path
-            d="M 10 70 Q 160 10 310 70"
-            stroke="#C91111"
-            strokeWidth="2"
-            fill="none"
-            strokeDasharray="6 4"
-            strokeLinecap="round"
-          />
-          <path
-            d="M 40 70 Q 160 25 280 70"
-            stroke="#C91111"
-            strokeWidth="1"
-            fill="none"
-            strokeDasharray="4 6"
-            strokeLinecap="round"
-          />
-        </svg> */}
-
           <p
             className="mt-5 sm:mt-8 text-gray-500 text-sm sm:text-base lg:text-lg max-w-xl text-center px-2"
             style={{

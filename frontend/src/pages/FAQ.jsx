@@ -91,40 +91,6 @@ function CursorGlow() {
   );
 }
 
-/* ─── 3D Floating Question Mark ───────────────────────────────────────────── */
-// function FloatingQMark({ x, y, size, delay, rotateDir }) {
-//   const ref = useRef(null);
-//   useEffect(() => {
-//     let raf;
-//     let t = delay;
-//     const tick = () => {
-//       t += 0.008;
-//       if (ref.current) {
-//         const yOff = Math.sin(t) * 18;
-//         const rot  = Math.sin(t * 0.7) * (rotateDir === 1 ? 12 : -12);
-//         ref.current.style.transform = `translateY(${yOff}px) rotateY(${rot}deg) rotateZ(${rot * 0.3}deg)`;
-//       }
-//       raf = requestAnimationFrame(tick);
-//     };
-//     raf = requestAnimationFrame(tick);
-//     return () => cancelAnimationFrame(raf);
-//   }, [delay, rotateDir]);
-
-//   return (
-//     <div ref={ref} style={{
-//       position: "absolute", left: x, top: y,
-//       fontSize: size, fontWeight: 900, lineHeight: 1,
-//       color: "transparent",
-//       WebkitTextStroke: "2px rgba(201,17,17,0.3)",
-//       fontFamily: "'Georgia', serif",
-//       pointerEvents: "none", userSelect: "none",
-//       transformStyle: "preserve-3d",
-//       willChange: "transform",
-//       filter: "drop-shadow(0 8px 24px rgba(201,17,17,0.2))",
-//     }} aria-hidden="true">?</div>
-//   );
-// }
-
 /* ─── 3D Parallax Orb ────────────────────────────────────────────────────── */
 function ParallaxOrb({ scrollY, baseX, baseY, size, speed, color }) {
   const y = -scrollY * speed;
@@ -382,21 +348,6 @@ export default function FAQ() {
         }}
       >
 
-        {/* ── Background: giant ghosted question marks ── */}
-        {/* <FloatingQMark x="4%"   y="5%"   size="clamp(60px,12vw,160px)" delay={0}   rotateDir={1}  />
-        <FloatingQMark x="78%"  y="20%"  size="clamp(70px,14vw,200px)" delay={2}   rotateDir={-1} /> */}
-        {/* <FloatingQMark x="55%"  y="60%"  size="clamp(50px,9vw,120px)"  delay={1.2} rotateDir={1}  /> */}
-        {/* <FloatingQMark x="16%"  y="70%"  size="clamp(55px,10vw,140px)" delay={3}   rotateDir={-1} />
-        <FloatingQMark x="82%"  y="75%"  size="clamp(40px,8vw,100px)"  delay={0.8} rotateDir={1}  /> */}
-
-        {/* ── Parallax orbs ── */}
-        {/* <ParallaxOrb scrollY={localScroll} baseX="10%"  baseY="20%"  size={300} speed={0.12} color="radial-gradient(circle, rgba(201,17,17,0.18) 0%, transparent 70%)" />
-        <ParallaxOrb scrollY={localScroll} baseX="75%"  baseY="40%"  size={200} speed={0.08} color="radial-gradient(circle, rgba(201,17,17,0.15) 0%, transparent 70%)" />
-        <ParallaxOrb scrollY={localScroll} baseX="40%"  baseY="80%"  size={250} speed={0.15} color="radial-gradient(circle, rgba(201,17,17,0.16) 0%, transparent 70%)" /> */}
-
-        {/* ── DNA helix on the side — desktop only ── */}
-        {/* <div className="hidden md:block"><HelixDecor scrollY={localScroll} /></div> */}
-
         {/* ── Rotating ring decoration ── */}
         <div className="hidden sm:block" style={{
           position: "absolute", right: -80, top: "0%",
@@ -442,23 +393,6 @@ export default function FAQ() {
             );
           })}
         </svg>
-
-        {/* ── Bottom-center arc decoration ── */}
-        {/* <svg width="320" height="80" viewBox="0 0 320 80"
-          style={{ position: "absolute", bottom: 24, left: "50%", transform: "translateX(-50%)", opacity: 0.35, pointerEvents: "none" }}
-          aria-hidden="true">
-          <path d="M 10 70 Q 160 10 310 70" stroke="#C91111" strokeWidth="2" fill="none" strokeDasharray="6 4" strokeLinecap="round" />
-          <path d="M 40 70 Q 160 25 280 70" stroke="#C91111" strokeWidth="1" fill="none" strokeDasharray="4 6" strokeLinecap="round" />
-        </svg> */}
-
-        {/* ── Mid-left floating dots cluster — desktop only ── */}
-        {/* <svg width="80" height="80" viewBox="0 0 80 80" className="hidden sm:block"
-          style={{ position: "absolute", left: "5%", top: "40%", opacity: 0.4, pointerEvents: "none" }}
-          aria-hidden="true">
-          {[0,1,2,3,4,5,6,7,8].map(i => (
-            <circle key={i} cx={(i % 3) * 28 + 12} cy={Math.floor(i / 3) * 28 + 12} r="3.5" fill="#C91111" />
-          ))}
-        </svg> */}
 
         {/* ── Mid-right floating dots cluster — desktop only ── */}
         <svg width="80" height="80" viewBox="0 0 80 80" className="hidden sm:block"

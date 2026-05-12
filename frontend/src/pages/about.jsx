@@ -508,37 +508,6 @@ function PageDecorations() {
         </defs>
         <rect width="100%" height="100%" fill="url(#about-grid)" />
       </svg>
-
-      {/* Bottom arc */}
-      {/* <svg
-        width="400"
-        height="80"
-        viewBox="0 0 400 60"
-        style={{
-          position: "absolute",
-          bottom: 40,
-          left: "50%",
-          transform: "translateX(-50%)",
-          opacity: 0.12,
-        }}
-      >
-        <path
-          d="M 10 50 Q 200 5 390 50"
-          stroke="#C91111"
-          strokeWidth="2"
-          fill="none"
-          strokeDasharray="8 6"
-          strokeLinecap="round"
-        />
-        <path
-          d="M 40 50 Q 200 18 360 50"
-          stroke="#C91111"
-          strokeWidth="1"
-          fill="none"
-          strokeDasharray="5 8"
-          strokeLinecap="round"
-        />
-      </svg> */}
     </div>
   );
 }
@@ -804,9 +773,6 @@ export default function About() {
       <div className="max-w-5xl mx-auto flex flex-col gap-20">
         {/* about hero section */}
         <div className="text-center">
-          {/* <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
-            We Build Brands <span className="text-[#C91111]">That Matter</span>
-          </h2> */}
           <h2
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
@@ -962,45 +928,6 @@ export default function About() {
             />
           </div>
         </div>
-        {/* end two-column row */}
-
-        {/* mission and vision section-3*/}
-        {/* <div className="py-16 px-4">
-          <div className="text-center mb-12">
-            <h3 className="font-serif text-3xl sm:text-4xl font-extrabold text-black">
-              Mission<span className="text-[#C91111]"> & </span>Vision
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {mission.map((v, i) => (
-              <AnimatedCard
-                key={v.Heading}
-                delay={i * 0.1}
-                className="relative px-6 py-10 text-center"
-              >
-                <div className="absolute rounded-xl inset-0 border-2 border-gray-600"></div>
-
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#c91111] px-4 rounded-full">
-                  <h2 className="font-serif text-xl font-bold text-gray-100 tracking-widest">
-                    {v.Heading.toUpperCase()}
-                  </h2>
-                </div>
-
-                <div className="mt-6 space-y-4">
-                  {v.Text.split(".").map((line, idx) => (
-                    <p
-                      key={idx}
-                      className="text-[#c91111] font-semibold text-sm tracking-wide"
-                    >
-                      {line.trim()}
-                    </p>
-                  ))}
-                </div>
-              </AnimatedCard>
-            ))}
-          </div>
-        </div> */}
 
         <div>
           <div className="text-center mb-10">
