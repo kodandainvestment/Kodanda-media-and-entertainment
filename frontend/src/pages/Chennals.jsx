@@ -146,7 +146,7 @@ const channelsData = {
       tagline: "News but make it savage 😏",
       logo: "/sarcastic.png",
       links: {
-        instagram: "https://www.instagram.com/sarcastic_samachar",
+        instagram: "https://www.instagram.com/sarcastic.samachar",
         youtube: "https://www.youtube.com/@Sarcastic_Samachar",
         facebook: "https://www.facebook.com/sarcastic.samachar.k",
         linkedin: "https://www.linkedin.com/company/sarcastic-samachar/",
